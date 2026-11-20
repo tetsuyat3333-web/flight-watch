@@ -61,6 +61,7 @@ svg{display:block;width:100%;height:auto}
 
   <div class="card">
     <h2>最新の便一覧(安い順)</h2>
+    <div class="meta" id="rule" style="margin:-4px 0 8px">同じ航空会社・同じアライアンス/グループの乗継ぎのみ表示(別会社の自己乗り継ぎは除外)</div>
     <div id="list" class="empty">—</div>
   </div>
 
@@ -102,6 +103,7 @@ async function getJSON(p){const r=await fetch(p+"?v="+Date.now());if(!r.ok)throw
     document.getElementById("level").innerHTML=`<span class="level ${esc(pi.price_level)}">Googleの判定: 今は${esc(lv)}</span> <span class="meta">${rg}</span>`;
   }
 
+  if(latest.excluded_self_transfer)document.getElementById("rule").textContent+=`・今回 ${latest.excluded_self_transfer} 件除外`;
   const fl=latest.flights||[];
   document.getElementById("list").innerHTML=fl.length?`<table><tr><th>価格</th><th>出発・航空会社・経由</th><th>所要</th></tr>${fl.map(f=>`<tr><td class="p">${eur(f.price)}${f.stops?"":'<span class="tag">直行</span>'}</td><td><b>${apt[f.dep_airport]||esc(f.dep_airport)}</b>・${esc(f.airlines.join(" / "))}<br><span class="meta">${f.stops?"経由 "+esc(f.layovers.join(", ")):"直行"}・${apt[f.arr_airport]||esc(f.arr_airport)}着</span></td><td>${hm(f.duration_min)}</td></tr>`).join("")}</table>`:"—";
 

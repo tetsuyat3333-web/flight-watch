@@ -10,3 +10,7 @@
 - `config.json` … 日程・空港。`nonstop_alert_eur` に数字(例 1200)を入れると、直行便がその金額以下のときにも通知。
 - Secrets に `SERPAPI_KEY` を登録(Settings → Secrets and variables → Actions)。
 - Settings → Pages → Branch: `main` / `(root)` で公開。
+
+## 乗継ぎのルール
+同じ航空会社、または同じアライアンス(スター・ワンワールド・スカイチーム)/グループの便だけ残し、
+航空会社がバラバラな自己乗り継ぎ(別々の航空券)は除外します。一覧は `scripts/airlines.py`。

@@ -14,6 +14,9 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from airlines import is_allowed  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 CONFIG = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
@@ -91,7 +94,9 @@ def main() -> int:
         print("api error:", res["error"], file=sys.stderr)
         return 0
 
-    options = [o for o in res.get("best_flights", []) + res.get("other_flights", []) if o.get("price") and o.get("flights")]
+    raw = [o for o in res.get("best_flights", []) + res.get("other_flights", []) if o.get("price") and o.get("flights")]
+    options = [o for o in raw if is_allowed(o)]
+    excluded = len(raw) - len(options)
     flights = sorted((summarize(o) for o in options), key=lambda f: f["price"])
     nonstop = [f for f in flights if f["stops"] == 0]
 
@@ -126,6 +131,7 @@ def main() -> int:
         "home": best_home,
         "home_nonstop": best_home_nonstop,
         "flights": flights[:20],
+        "excluded_self_transfer": excluded,
         "price_insights": insights,
     }
     (DATA / "latest.json").write_text(json.dumps(latest, ensure_ascii=False, indent=1), encoding="utf-8")
