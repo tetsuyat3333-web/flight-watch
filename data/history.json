@@ -225,5 +225,85 @@
    "message": "全体最安: €1063 Etihad FRA→NRT 経由1回(AUH)\n直行最安: €1210 JAL FRA→NRT 直行",
    "click": "https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1"
   }
+ },
+ {
+  "t": "2026-11-20T13:07:27+00:00",
+  "best": {
+   "price": 1063,
+   "airlines": [
+    "Etihad"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 21:55",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-27 12:45",
+   "duration_min": 1910,
+   "layovers": [
+    "AUH"
+   ],
+   "flight_numbers": [
+    "EY 124",
+    "EY 800"
+   ]
+  },
+  "nonstop": {
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  "home": {
+   "price": 1063,
+   "airlines": [
+    "Etihad"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 21:55",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-27 12:45",
+   "duration_min": 1910,
+   "layovers": [
+    "AUH"
+   ],
+   "flight_numbers": [
+    "EY 124",
+    "EY 800"
+   ]
+  },
+  "home_nonstop": {
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  "price_level": null,
+  "typical_range": null,
+  "notify": {
+   "title": "✈️ FRA⇄Tokyo current lowest fares",
+   "message": "Cheapest overall: €1063 Etihad FRA→NRT 1 stop(s) via AUH\nCheapest nonstop: €1210 JAL FRA→NRT nonstop",
+   "click": "https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1"
+  }
  }
 ]
