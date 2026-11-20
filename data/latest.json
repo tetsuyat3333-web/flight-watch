@@ -1,5 +1,5 @@
 {
- "t": "2026-11-20T13:07:27+00:00",
+ "t": "2026-11-20T22:13:38+00:00",
  "config": {
   "from": [
    "FRA",
@@ -219,6 +219,26 @@
    "flight_numbers": [
     "LH 53",
     "LH 710"
+   ]
+  },
+  {
+   "price": 1372,
+   "airlines": [
+    "Lufthansa",
+    "ANA"
+   ],
+   "stops": 1,
+   "dep_airport": "BRE",
+   "dep_time": "2027-07-25 06:10",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 06:55",
+   "duration_min": 1065,
+   "layovers": [
+    "MUC"
+   ],
+   "flight_numbers": [
+    "LH 2199",
+    "NH 218"
    ]
   },
   {
