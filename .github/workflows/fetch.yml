@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "17 */3 * * *"   # 3時間ごと(月約240回 = SerpApi無料枠250回以内)
   workflow_dispatch: {}       # Actions画面から手動実行も可能
+  push:                       # 設定やコードを変えたときもすぐ実行
+    branches: [main]
+    paths: ["config.json", "scripts/**", ".github/workflows/**"]
 
 permissions:
   contents: write
