@@ -1,5 +1,5 @@
 {
- "t": "2026-11-20T12:53:42+00:00",
+ "t": "2026-11-20T13:01:52+00:00",
  "config": {
   "from": [
    "FRA",
@@ -17,7 +17,8 @@
   "return_date": "2027-08-13",
   "adults": 1,
   "nonstop_alert_eur": null,
-  "skyscanner_url": "https://www.skyscanner.de/transport/flights/{dep}/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1"
+  "skyscanner_url": "https://www.skyscanner.de/transport/flights/{dep}/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1",
+  "notify_endpoint": "https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=notify"
  },
  "best": {
   "price": 1063,
