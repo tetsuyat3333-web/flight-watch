@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FRA ⇄ 東京 最安値ウォッチ 2027夏</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1d1f;--sub:#6b6b70;--line:#e4e1da;--accent:#0770e3;--good:#0a7d4f;--warn:#b25e00}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--card:#1f1f23;--ink:#f2f2f2;--sub:#a0a0a8;--line:#33333a;--accent:#4aa3ff;--good:#3ccf8e;--warn:#ffb347}}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:15px;color:var(--sub);margin:0 0 4px;letter-spacing:.04em}
+.route{font-size:32px;font-weight:800}
+.route span{color:var(--accent)}
+.dates,.updated{color:var(--sub);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.grid .card{margin-top:0}
+.card h2{font-size:13px;margin:0 0 8px;color:var(--sub)}
+.price{font-size:38px;font-weight:800;line-height:1.1}
+.best .price{color:var(--good)}
+.meta{font-size:13px;color:var(--sub);margin-top:4px}
+.level{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--bg);margin-top:8px}
+.level.low{color:var(--good)}.level.high{color:var(--warn)}
+a.book{display:block;text-align:center;margin-top:16px;padding:16px;border-radius:14px;background:var(--accent);color:#fff;font-weight:800;font-size:17px;text-decoration:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--sub);font-weight:600;font-size:11px;padding:6px 4px;border-bottom:1px solid var(--line)}
+td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+td.p{font-weight:800;white-space:nowrap}
+.tag{font-size:10px;font-weight:700;padding:1px 6px;border-radius:6px;background:var(--good);color:#fff;margin-left:4px}
+svg{display:block;width:100%;height:auto}
+.legend{font-size:11px;color:var(--sub);display:flex;gap:14px;margin-top:6px}
+.legend i{display:inline-block;width:10px;height:3px;vertical-align:middle;margin-right:4px}
+.empty{color:var(--sub);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>2027夏・一時帰国 航空券ウォッチ(3時間ごと自動更新)</h1>
+  <div class="route">FRA <span>⇄</span> 東京</div>
+  <div class="dates">2027/7/25(日)→ 8/13(金)・大人1名・エコノミー・羽田/成田の安い方</div>
+  <div class="updated" id="updated">読み込み中…</div>
+
+  <div class="grid">
+    <div class="card best"><h2>全体の最安値</h2><div class="price" id="bPrice">—</div><div class="meta" id="bMeta"></div></div>
+    <div class="card"><h2>直行便の最安値</h2><div class="price" id="nPrice">—</div><div class="meta" id="nMeta"></div></div>
+  </div>
+  <div id="level"></div>
+
+  <a class="book" id="book" href="https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Skyscannerで予約・確認する</a>
+
+  <div class="card">
+    <h2>価格の推移</h2>
+    <div id="chart" class="empty">データがたまると表示されます</div>
+    <div class="legend"><span><i style="background:var(--good)"></i>全体最安</span><span><i style="background:var(--accent)"></i>直行便最安</span></div>
+    <div class="meta" id="lows"></div>
+  </div>
+
+  <div class="card">
+    <h2>最新の便一覧(安い順)</h2>
+    <div id="list" class="empty">—</div>
+  </div>
+
+  <p class="meta">価格データ: Google フライト(SerpApi経由)。表示価格は取得時点の往復総額(EUR)で、予約時に変わることがあります。</p>
+</div>
+<script>
+const eur=n=>n==null?"—":"€"+Math.round(n).toLocaleString("de-DE");
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const hm=m=>m?Math.floor(m/60)+"時間"+(m%60?m%60+"分":""):"";
+const tm=s=>s?s.slice(5).replace("-","/"):"";
+const local=iso=>new Date(iso).toLocaleString("ja-JP",{timeZone:"Europe/Berlin",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"});
+const apt={HND:"羽田",NRT:"成田"};
+function meta(f){return f?`${esc(f.airlines.join(" / "))}・${f.stops?"経由"+f.stops+"回("+esc(f.layovers.join(","))+")":"直行"}・${apt[f.arr_airport]||esc(f.arr_airport)}着・${hm(f.duration_min)}<br>往路 ${esc(tm(f.dep_time))} 発 → ${esc(tm(f.arr_time))} 着`:"見つかりませんでした";}
+
+async function getJSON(p){const r=await fetch(p+"?v="+Date.now());if(!r.ok)throw new Error(p);return r.json();}
+
+(async()=>{
+  let latest=null,history=[];
+  try{latest=await getJSON("data/latest.json");}catch(e){}
+  try{history=await getJSON("data/history.json");}catch(e){}
+  if(!latest){document.getElementById("updated").textContent="まだデータがありません(最初の自動取得を待っています)";return;}
+
+  document.getElementById("updated").textContent="最終更新: "+local(latest.t)+"(ドイツ時間)";
+  document.getElementById("bPrice").textContent=eur(latest.best&&latest.best.price);
+  document.getElementById("bMeta").innerHTML=meta(latest.best);
+  document.getElementById("nPrice").textContent=eur(latest.nonstop&&latest.nonstop.price);
+  document.getElementById("nMeta").innerHTML=meta(latest.nonstop);
+
+  const pi=latest.price_insights||{};
+  if(pi.price_level){
+    const lv={low:"安め",typical:"普通",high:"高め"}[pi.price_level]||pi.price_level;
+    const rg=pi.typical_price_range?`(この路線の通常価格帯 ${eur(pi.typical_price_range[0])}〜${eur(pi.typical_price_range[1])})`:"";
+    document.getElementById("level").innerHTML=`<span class="level ${esc(pi.price_level)}">Googleの判定: 今は${esc(lv)}</span> <span class="meta">${rg}</span>`;
+  }
+
+  const fl=latest.flights||[];
+  document.getElementById("list").innerHTML=fl.length?`<table><tr><th>価格</th><th>航空会社・経由</th><th>所要</th></tr>${fl.map(f=>`<tr><td class="p">${eur(f.price)}${f.stops?"":'<span class="tag">直行</span>'}</td><td>${esc(f.airlines.join(" / "))}<br><span class="meta">${f.stops?"経由 "+esc(f.layovers.join(", ")):"直行"}・${apt[f.arr_airport]||esc(f.arr_airport)}着</span></td><td>${hm(f.duration_min)}</td></tr>`).join("")}</table>`:"—";
+
+  const rows=history.filter(h=>h.best);
+  const ns=rows.filter(h=>h.nonstop);
+  if(rows.length){
+    const lo=rows.reduce((a,b)=>b.best.price<a.best.price?b:a);
+    const nlo=ns.length?ns.reduce((a,b)=>b.nonstop.price<a.nonstop.price?b:a):null;
+    document.getElementById("lows").innerHTML=`これまでの最安: 全体 <b>${eur(lo.best.price)}</b>(${local(lo.t)})`+(nlo?`/直行便 <b>${eur(nlo.nonstop.price)}</b>(${local(nlo.t)})`:"")+`・取得 ${rows.length} 回`;
+  }
+  if(rows.length>=2){
+    const W=640,H=180,P=28;
+    const all=rows.flatMap(h=>[h.best.price].concat(h.nonstop?[h.nonstop.price]:[]));
+    const mn=Math.min(...all),mx=Math.max(...all),rg=(mx-mn)||1;
+    const t0=new Date(rows[0].t),t1=new Date(rows[rows.length-1].t),tr=(t1-t0)||1;
+    const X=t=>P+(new Date(t)-t0)/tr*(W-2*P),Y=v=>10+(1-(v-mn)/rg)*(H-10-P);
+    const line=(arr,get,col)=>`<path d="${arr.map((h,i)=>(i?"L":"M")+X(h.t).toFixed(1)+" "+Y(get(h)).toFixed(1)).join(" ")}" fill="none" stroke="${col}" stroke-width="2.2" stroke-linejoin="round"/>`;
+    document.getElementById("chart").className="";
+    document.getElementById("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}">
+      <text x="2" y="${Y(mx)+4}" font-size="11" fill="currentColor" opacity=".6">${eur(mx)}</text>
+      <text x="2" y="${Y(mn)+4}" font-size="11" fill="currentColor" opacity=".6">${eur(mn)}</text>
+      ${line(rows,h=>h.best.price,"var(--good)")}
+      ${ns.length>=2?line(ns,h=>h.nonstop.price,"var(--accent)"):""}
+      <text x="${P}" y="${H-6}" font-size="11" fill="currentColor" opacity=".6">${local(rows[0].t)}</text>
+      <text x="${W-P}" y="${H-6}" font-size="11" fill="currentColor" opacity=".6" text-anchor="end">${local(rows[rows.length-1].t)}</text>
+    </svg>`;
+  }
+})();
+</script>
+</body>
+</html>

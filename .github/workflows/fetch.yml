@@ -1,0 +1,47 @@
+name: Fetch flight prices
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # 3時間ごと(月約240回 = SerpApi無料枠250回以内)
+  workflow_dispatch: {}       # Actions画面から手動実行も可能
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: fetch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch prices
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: python scripts/fetch_prices.py
+
+      - name: Commit data
+        run: |
+          git config user.name "flight-watch-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "prices: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
+
+      - name: Notify on new low
+        if: hashFiles('alert.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "✈️ FRA⇄東京 値下がり $(date -u +%m/%d)" \
+            --body-file alert.md \
+            --assignee "${{ github.repository_owner }}"
