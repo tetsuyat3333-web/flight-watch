@@ -4,156 +4,273 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FRA ⇄ Tokyo Fare Watch · Summer 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1d1f;--sub:#6b6b70;--line:#e4e1da;--accent:#0770e3;--good:#0a7d4f;--warn:#b25e00}
-@media (prefers-color-scheme:dark){:root{--bg:#141416;--card:#1f1f23;--ink:#f2f2f2;--sub:#a0a0a8;--line:#33333a;--accent:#4aa3ff;--good:#3ccf8e;--warn:#ffb347}}
+:root{
+  --sky:#DCE6F1;      /* page: pale morning sky */
+  --paper:#FFFFFF;    /* boarding pass / sheets */
+  --navy:#14213D;     /* ink + pass header */
+  --mute:#5B6680;     /* secondary text */
+  --rule:#D5DCE7;     /* hairlines */
+  --red:#D7263D;      /* attention: nearby airport cheaper, drops */
+  --green:#167A55;    /* good price */
+  --cond:"Barlow Condensed",system-ui,sans-serif;
+  --body:"Barlow",system-ui,sans-serif;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
-.wrap{max-width:720px;margin:0 auto;padding:20px 16px 48px}
-h1{font-size:15px;color:var(--sub);margin:0 0 4px;letter-spacing:.04em}
-.route{font-size:32px;font-weight:800}
-.route span{color:var(--accent)}
-.dates,.updated{color:var(--sub);font-size:13px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-@media (max-width:520px){.grid{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
-.grid .card{margin-top:0}
-.card h2{font-size:13px;margin:0 0 8px;color:var(--sub)}
-.price{font-size:38px;font-weight:800;line-height:1.1}
-.best .price{color:var(--good)}
-.meta{font-size:13px;color:var(--sub);margin-top:4px}
-.level{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--bg);margin-top:8px}
-.level.low{color:var(--good)}.level.high{color:var(--warn)}
-a.book{display:block;text-align:center;margin-top:16px;padding:16px;border-radius:14px;background:var(--accent);color:#fff;font-weight:800;font-size:17px;text-decoration:none}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{text-align:left;color:var(--sub);font-weight:600;font-size:11px;padding:6px 4px;border-bottom:1px solid var(--line)}
-td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}
-td.p{font-weight:800;white-space:nowrap}
-.alt{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;color:#fff;background:var(--warn);padding:3px 8px;border-radius:8px}
-.tag{font-size:10px;font-weight:700;padding:1px 6px;border-radius:6px;background:var(--good);color:#fff;margin-left:4px}
-svg{display:block;width:100%;height:auto}
-.legend{font-size:11px;color:var(--sub);display:flex;gap:14px;margin-top:6px}
-.legend i{display:inline-block;width:10px;height:3px;vertical-align:middle;margin-right:4px}
-.empty{color:var(--sub);font-size:13px}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sky);color:var(--navy);font:400 16px/1.5 var(--body)}
+.wrap{max-width:620px;margin:0 auto;padding:24px 16px 56px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+/* ---------- boarding pass ---------- */
+.pass{background:var(--paper);border-radius:18px;overflow:hidden;box-shadow:0 1px 0 #c5cfdd,0 18px 40px -24px rgba(20,33,61,.45)}
+.pass-head{background:var(--navy);color:#fff;padding:18px 22px 20px}
+.pass-top{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:#AFC0DA}
+.codes{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.code{font:700 64px/1 var(--cond);letter-spacing:.02em}
+.code small{display:block;font:500 15px/1.3 var(--body);color:#AFC0DA;letter-spacing:0}
+.code.r{text-align:right}
+.plane{flex:1;margin:0 14px;height:2px;background:repeating-linear-gradient(90deg,#AFC0DA 0 6px,transparent 6px 12px);position:relative}
+.plane svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--navy);padding:0 6px}
+.legs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;font-size:14px}
+.legs b{display:block;font:600 22px/1.2 var(--cond);color:#fff;white-space:nowrap}
+.legs span{color:#AFC0DA}
+
+.fares{display:grid;grid-template-columns:1fr 1fr}
+.fare{padding:18px 22px 20px}
+.fare+.fare{border-left:1px dashed var(--rule)}
+.fare h2{margin:0;font:500 15px/1.3 var(--body);color:var(--mute)}
+.price{font:700 52px/1 var(--cond);margin:6px 0 8px;font-variant-numeric:tabular-nums}
+.fare.best .price{color:var(--green)}
+.detail{font-size:14px;line-height:1.45;color:var(--mute)}
+.detail strong{color:var(--navy);font-weight:600}
+.alt{margin-top:10px;font-size:13px;font-weight:600;color:var(--red)}
+
+.tear{position:relative;height:0;border-top:2px dashed var(--rule);margin:0 18px}
+.tear::before,.tear::after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:var(--sky)}
+.tear::before{left:-31px}.tear::after{right:-31px}
+
+.stub{padding:16px 22px 20px;display:flex;flex-direction:column;gap:10px}
+.verdict{font-size:15px}
+.verdict b{font-weight:600}
+.verdict .low{color:var(--green)}.verdict .high{color:var(--red)}
+.btn{display:block;text-align:center;text-decoration:none;font:600 18px/1 var(--body);padding:16px;border-radius:12px;background:var(--navy);color:#fff}
+.btn.ghost{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 2px var(--navy);font-size:16px;padding:13px}
+.updated{font-size:13px;color:var(--mute);text-align:center;margin-top:10px}
+
+/* ---------- sections ---------- */
+section{margin-top:36px}
+section > h3{font:600 26px/1.15 var(--cond);margin:0 0 4px}
+section > p.lead{margin:0 0 14px;color:var(--mute);font-size:15px}
+.sheet{background:var(--paper);border-radius:14px;padding:6px 18px}
+
+/* flights */
+.flight{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 0;border-top:1px solid var(--rule)}
+.flight:first-child{border-top:0}
+.fp{font:700 28px/1 var(--cond);font-variant-numeric:tabular-nums;white-space:nowrap;min-width:3.4em}
+.fl b{font-weight:600}
+.fl div{font-size:14px;color:var(--mute)}
+.dur{font:500 18px/1 var(--cond);color:var(--mute);text-align:right}
+.ns{display:inline-block;margin-left:6px;font:600 12px/1 var(--body);color:#fff;background:var(--navy);padding:4px 7px;border-radius:6px;vertical-align:2px}
+.note{font-size:13px;color:var(--mute);margin:10px 2px 0}
+
+/* chart */
+.chart{padding:16px 18px}
+.key{display:flex;gap:18px;font-size:13px;color:var(--mute);margin-top:8px}
+.key i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.lows{font-size:14px;margin-top:10px}
+.empty{color:var(--mute);font-size:15px;padding:10px 0}
+
+/* subscribe */
+form{display:flex;gap:8px}
+input[type=email]{flex:1;min-width:0;font:400 17px var(--body);padding:14px;border-radius:12px;border:2px solid var(--rule);background:var(--paper);color:var(--navy)}
+input[type=email]:focus{border-color:var(--navy);outline:none}
+button{font:600 17px var(--body);border:0;border-radius:12px;padding:0 20px;background:var(--red);color:#fff;cursor:pointer}
+button:disabled{opacity:.6}
+.msg{font-size:14px;margin-top:8px;min-height:1.4em}
+
+footer{margin-top:40px;font-size:13px;color:var(--mute);line-height:1.5}
+
+@media (max-width:480px){
+  .code{font-size:50px}
+  .fares{grid-template-columns:1fr}
+  .fare+.fare{border-left:0;border-top:1px dashed var(--rule)}
+  .price{font-size:48px}
+  .flight{gap:12px}
+  .fp{font-size:25px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .price{animation:land .5s ease-out both}
+  @keyframes land{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>Summer 2027 trip to Japan · Fare watch (auto-updated every 3 hours)</h1>
-  <div class="route">FRA <span>⇄</span> Tokyo</div>
-  <div class="dates">Sun 25 Jul 2027 → Fri 13 Aug 2027 · 1 adult · Economy · Haneda or Narita, whichever is cheaper<br>Departing Frankfurt (Cologne, Düsseldorf, Bremen or Amsterdam shown when cheaper)</div>
-  <div class="updated" id="updated">Loading…</div>
+<main class="wrap">
 
-  <div class="grid">
-    <div class="card best"><h2>Cheapest overall</h2><div class="price" id="bPrice">—</div><div class="meta" id="bMeta"></div></div>
-    <div class="card"><h2>Cheapest nonstop</h2><div class="price" id="nPrice">—</div><div class="meta" id="nMeta"></div></div>
-  </div>
-  <div id="level"></div>
+  <article class="pass" aria-label="Fare summary">
+    <div class="pass-head">
+      <div class="pass-top"><span>Summer 2027 trip to Japan</span><span>1 adult, economy</span></div>
+      <div class="codes">
+        <div class="code">FRA<small>Frankfurt</small></div>
+        <div class="plane" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" transform="rotate(90 12 12)"/></svg></div>
+        <div class="code r">TYO<small>Haneda or Narita</small></div>
+      </div>
+      <div class="legs">
+        <div><span>Outbound</span><b>Sun 25 Jul</b></div>
+        <div style="text-align:right"><span>Return</span><b>Fri 13 Aug</b></div>
+      </div>
+    </div>
 
-  <a class="book" id="book" href="https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1" target="_blank" rel="noopener">View cheapest route on Skyscanner</a>
+    <div class="fares">
+      <div class="fare best"><h2>Cheapest fare</h2><div class="price" id="bPrice">—</div><div class="detail" id="bMeta">Loading…</div></div>
+      <div class="fare"><h2>Cheapest nonstop</h2><div class="price" id="nPrice">—</div><div class="detail" id="nMeta"></div></div>
+    </div>
 
+    <div class="tear" aria-hidden="true"></div>
 
-  <div class="card" id="sub">
-    <h2>📩 Get price-drop alerts by email</h2>
-    <div class="meta" style="margin:0 0 10px">You only get an email when the cheapest overall or cheapest nonstop fare drops (checked every 3 hours).</div>
-    <form id="subForm" style="display:flex;gap:8px">
-      <input id="subEmail" type="email" required placeholder="Email address" autocomplete="email" style="flex:1;min-width:0;font:inherit;font-size:16px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)">
-      <button type="submit" style="font:inherit;font-weight:800;border:0;border-radius:12px;padding:12px 16px;background:var(--accent);color:#fff">Subscribe</button>
+    <div class="stub">
+      <div class="verdict" id="level"></div>
+      <a class="btn" id="book" href="https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Book on Skyscanner</a>
+      <span id="bookAlt"></span>
+    </div>
+  </article>
+  <div class="updated" id="updated"></div>
+
+  <section aria-labelledby="h-flights">
+    <h3 id="h-flights">Today’s best options</h3>
+    <p class="lead">Round-trip totals, cheapest first. Departing Frankfurt, Cologne, Düsseldorf, Bremen or Amsterdam.</p>
+    <div class="sheet" id="list"><div class="empty">Loading flights…</div></div>
+    <p class="note" id="rule">Connections are only shown on one airline or within one alliance or airline group. Self-transfers are left out.</p>
+  </section>
+
+  <section aria-labelledby="h-chart">
+    <h3 id="h-chart">Price history</h3>
+    <p class="lead">Checked automatically every 3 hours.</p>
+    <div class="sheet chart">
+      <div id="chart" class="empty">The chart appears after a few checks.</div>
+      <div class="key"><span><i style="background:var(--green)"></i>Cheapest fare</span><span><i style="background:var(--navy)"></i>Cheapest nonstop</span></div>
+      <div class="lows" id="lows"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-sub">
+    <h3 id="h-sub">Get an email when prices drop</h3>
+    <p class="lead">Only when the cheapest fare or the cheapest nonstop gets cheaper. Unsubscribe from any email.</p>
+    <form id="subForm">
+      <label for="subEmail" style="position:absolute;left:-9999px">Email address</label>
+      <input id="subEmail" type="email" required placeholder="you@example.com" autocomplete="email">
+      <button type="submit">Notify me</button>
     </form>
-    <div class="meta" id="subMsg" style="margin-top:8px"></div>
-  </div>
-  <div class="card">
-    <h2>Price history</h2>
-    <div id="chart" class="empty">The chart appears once more data is collected</div>
-    <div class="legend"><span><i style="background:var(--good)"></i>Cheapest overall</span><span><i style="background:var(--accent)"></i>Cheapest nonstop</span></div>
-    <div class="meta" id="lows"></div>
-  </div>
+    <div class="msg" id="subMsg" role="status"></div>
+  </section>
 
-  <div class="card">
-    <h2>Latest flights (cheapest first)</h2>
-    <div class="meta" id="rule" style="margin:-4px 0 8px">Only connections on one airline or within the same alliance/group are shown (self-transfers on separate airlines are excluded)</div>
-    <div id="list" class="empty">—</div>
-  </div>
+  <footer>Fares come from Google Flights via SerpApi and are round-trip totals in euros at the time of the check. The price may change when you book.</footer>
+</main>
 
-  <p class="meta">Fare data: Google Flights (via SerpApi). Prices are round-trip totals in EUR at the time of checking and may change when you book.</p>
-</div>
 <script>
 const eur=n=>n==null?"—":"€"+Math.round(n).toLocaleString("en-GB");
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const hm=m=>m?Math.floor(m/60)+"h"+(m%60?" "+m%60+"m":""):"";
-const tm=s=>s?s.slice(5).replace("-","/"):"";
-const local=iso=>new Date(iso).toLocaleString("en-GB",{timeZone:"Europe/Berlin",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"});
+const hm=m=>m?Math.floor(m/60)+"h"+(m%60?" "+String(m%60).padStart(2,"0")+"m":""):"";
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const tm=s=>{if(!s)return"";const m=s.match(/(\d{4})-(\d{2})-(\d{2}) (\d{1,2}:\d{2})/);return m?`${+m[3]} ${MON[+m[2]-1]} ${m[4]}`:esc(s);};
+const local=iso=>new Date(iso).toLocaleString("en-GB",{timeZone:"Europe/Berlin",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
 const apt={HND:"Haneda",NRT:"Narita",FRA:"Frankfurt",CGN:"Cologne",DUS:"Düsseldorf",BRE:"Bremen",AMS:"Amsterdam"};
+const name=c=>apt[c]||esc(c);
 const SKY="https://www.skyscanner.de/transport/flights/{dep}/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1";
 const sky=d=>SKY.replace("{dep}",String(d||"fra").toLowerCase());
-function meta(f){return f?`<b>From ${apt[f.dep_airport]||esc(f.dep_airport)}</b> · ${esc(f.airlines.join(" / "))} · ${f.stops?f.stops+" stop"+(f.stops>1?"s":"")+" ("+esc(f.layovers.join(","))+")":"Nonstop"} · to ${apt[f.arr_airport]||esc(f.arr_airport)} · ${hm(f.duration_min)}<br>Outbound: departs ${esc(tm(f.dep_time))} → arrives ${esc(tm(f.arr_time))}`:"None found";}
+const stops=f=>f.stops?`${f.stops} stop${f.stops>1?"s":""} via ${esc(f.layovers.join(", "))}`:"Nonstop";
+const $=id=>document.getElementById(id);
+
+function detail(f){
+  if(!f)return"No flight found";
+  return `<strong>${esc(f.airlines.join(" / "))}</strong><br>${name(f.dep_airport)} to ${name(f.arr_airport)}, ${f.stops?stops(f):"nonstop"}, ${hm(f.duration_min)}<br>Leaves ${tm(f.dep_time)}`;
+}
 
 async function getJSON(p){const r=await fetch(p+"?v="+Date.now());if(!r.ok)throw new Error(p);return r.json();}
 
-
-document.getElementById("subForm").addEventListener("submit",async e=>{
+$("subForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  const m=document.getElementById("subMsg"),btn=e.target.querySelector("button");
-  btn.disabled=true;m.textContent="Subscribing…";
+  const m=$("subMsg"),btn=e.target.querySelector("button");
+  btn.disabled=true;m.textContent="Signing you up…";
   try{
-    const r=await fetch("https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:document.getElementById("subEmail").value})});
+    const r=await fetch("https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:$("subEmail").value})});
     const d=await r.json();
-    if(!d.ok)m.textContent="⚠️ "+(d.error||"Could not subscribe");
-    else if(d.already)m.textContent="This address is already subscribed.";
-    else if(d.warning)m.textContent="✅ Subscribed (but the confirmation email could not be sent)";
-    else{m.textContent="✅ Subscribed. A confirmation email is on its way (check your spam folder too).";document.getElementById("subEmail").value="";}
-  }catch(err){m.textContent="⚠️ Network error. Please try again.";}
+    if(!d.ok)m.textContent=d.error||"Could not sign you up. Check the address and try again.";
+    else if(d.already)m.textContent="This address is already signed up.";
+    else if(d.warning)m.textContent="You’re signed up, but the confirmation email could not be sent.";
+    else{m.textContent="You’re signed up. A confirmation email is on its way. If you don’t see it, check your spam folder.";$("subEmail").value="";}
+  }catch(err){m.textContent="Could not reach the server. Check your connection and try again.";}
   btn.disabled=false;
 });
+
 (async()=>{
   let latest=null,history=[];
   try{latest=await getJSON("data/latest.json");}catch(e){}
   try{history=await getJSON("data/history.json");}catch(e){}
-  if(!latest){document.getElementById("updated").textContent="No data yet (waiting for the first automatic check)";return;}
+  if(!latest){$("bMeta").textContent="No fares yet. The first check runs within 3 hours.";$("list").innerHTML='<div class="empty">No flights yet.</div>';return;}
 
-  document.getElementById("updated").textContent="Last updated: "+local(latest.t)+" (German time)";
-  document.getElementById("bPrice").textContent=eur(latest.best&&latest.best.price);
-  document.getElementById("bMeta").innerHTML=meta(latest.best);
-  document.getElementById("nPrice").textContent=eur(latest.nonstop&&latest.nonstop.price);
-  document.getElementById("nMeta").innerHTML=meta(latest.nonstop);
-  const altNote=(f,h,id)=>{if(f&&f.dep_airport!=="FRA"){const d=h?`${eur(h.price-f.price)} cheaper than from Frankfurt (${eur(h.price)})`:"no matching flight from Frankfurt";document.getElementById(id).insertAdjacentHTML("beforeend",`<div class="alt">Nearby airport is cheaper: ${esc(d)}</div>`);}};
-  altNote(latest.best,latest.home,"bMeta");altNote(latest.nonstop,latest.home_nonstop,"nMeta");
-  if(latest.best)document.getElementById("book").href=sky(latest.best.dep_airport);
-  if(latest.best&&latest.best.dep_airport!=="FRA")document.getElementById("book").insertAdjacentHTML("afterend",`<a class="book" style="background:transparent;color:var(--accent);border:2px solid var(--accent);margin-top:8px;font-size:15px;padding:12px" href="${sky("fra")}" target="_blank" rel="noopener">View from Frankfurt on Skyscanner</a>`);
+  $("updated").textContent="Last checked "+local(latest.t)+" (German time)";
+  $("bPrice").textContent=eur(latest.best&&latest.best.price);
+  $("bMeta").innerHTML=detail(latest.best);
+  $("nPrice").textContent=eur(latest.nonstop&&latest.nonstop.price);
+  $("nMeta").innerHTML=detail(latest.nonstop);
+
+  const alt=(f,h,id)=>{
+    if(!f||f.dep_airport==="FRA")return;
+    const t=h?`${eur(h.price-f.price)} less than from Frankfurt`:"Not available from Frankfurt";
+    $(id).insertAdjacentHTML("beforeend",`<div class="alt">${esc(t)}</div>`);
+  };
+  alt(latest.best,latest.home,"bMeta");alt(latest.nonstop,latest.home_nonstop,"nMeta");
+
+  if(latest.best){
+    $("book").href=sky(latest.best.dep_airport);
+    if(latest.best.dep_airport!=="FRA"){
+      $("book").textContent=`Book from ${name(latest.best.dep_airport)} on Skyscanner`;
+      $("bookAlt").outerHTML=`<a class="btn ghost" href="${sky("fra")}" target="_blank" rel="noopener">See fares from Frankfurt</a>`;
+    }
+  }
 
   const pi=latest.price_insights||{};
   if(pi.price_level){
-    const lv={low:"low",typical:"typical",high:"high"}[pi.price_level]||pi.price_level;
-    const rg=pi.typical_price_range?`(typical range for this route: ${eur(pi.typical_price_range[0])}–${eur(pi.typical_price_range[1])})`:"";
-    document.getElementById("level").innerHTML=`<span class="level ${esc(pi.price_level)}">Google says prices are ${esc(lv)} right now</span> <span class="meta">${rg}</span>`;
-  }
+    const word={low:"low",typical:"about normal",high:"high"}[pi.price_level]||esc(pi.price_level);
+    const rg=pi.typical_price_range?` This route usually costs ${eur(pi.typical_price_range[0])} to ${eur(pi.typical_price_range[1])}.`:"";
+    $("level").innerHTML=`Google says prices are <b class="${esc(pi.price_level)}">${word}</b> right now.${rg}`;
+  }else $("level").remove();
 
-  if(latest.excluded_self_transfer)document.getElementById("rule").textContent+=` · ${latest.excluded_self_transfer} excluded this time`;
+  if(latest.excluded_self_transfer)$("rule").textContent+=` ${latest.excluded_self_transfer} left out in the last check.`;
   const fl=latest.flights||[];
-  document.getElementById("list").innerHTML=fl.length?`<table><tr><th>Price</th><th>From · Airline · Stops</th><th>Duration</th></tr>${fl.map(f=>`<tr><td class="p">${eur(f.price)}${f.stops?"":'<span class="tag">Nonstop</span>'}</td><td><b>${apt[f.dep_airport]||esc(f.dep_airport)}</b> · ${esc(f.airlines.join(" / "))}<br><span class="meta">${f.stops?"via "+esc(f.layovers.join(", ")):"Nonstop"} · to ${apt[f.arr_airport]||esc(f.arr_airport)}</span></td><td>${hm(f.duration_min)}</td></tr>`).join("")}</table>`:"—";
+  $("list").innerHTML=fl.length?fl.map(f=>`<div class="flight">
+      <div class="fp">${eur(f.price)}</div>
+      <div class="fl"><b>${esc(f.airlines.join(" / "))}</b>${f.stops?"":'<span class="ns">Nonstop</span>'}<div>${name(f.dep_airport)} to ${name(f.arr_airport)}${f.stops?", "+stops(f):""}</div></div>
+      <div class="dur">${hm(f.duration_min)}</div>
+    </div>`).join(""):'<div class="empty">No flights matched in the last check.</div>';
 
-  const rows=history.filter(h=>h.best);
-  const ns=rows.filter(h=>h.nonstop);
+  const rows=history.filter(h=>h.best), ns=rows.filter(h=>h.nonstop);
   if(rows.length){
     const lo=rows.reduce((a,b)=>b.best.price<a.best.price?b:a);
     const nlo=ns.length?ns.reduce((a,b)=>b.nonstop.price<a.nonstop.price?b:a):null;
-    document.getElementById("lows").innerHTML=`Lowest so far: overall <b>${eur(lo.best.price)}</b> (${local(lo.t)})`+(nlo?` · nonstop <b>${eur(nlo.nonstop.price)}</b> (${local(nlo.t)})`:"")+` · ${rows.length} checks`;
+    $("lows").innerHTML=`Lowest seen: <b>${eur(lo.best.price)}</b> on ${local(lo.t)}`+(nlo?`, nonstop <b>${eur(nlo.nonstop.price)}</b> on ${local(nlo.t)}`:"")+`. ${rows.length} checks so far.`;
   }
   if(rows.length>=2){
-    const W=640,H=180,P=28;
+    const W=Math.max(280,$("chart").clientWidth||600),H=Math.round(Math.min(240,Math.max(170,W*.45))),PL=52,PR=6,PT=10,PB=26;
     const all=rows.flatMap(h=>[h.best.price].concat(h.nonstop?[h.nonstop.price]:[]));
-    const mn=Math.min(...all),mx=Math.max(...all),rg=(mx-mn)||1;
-    const t0=new Date(rows[0].t),t1=new Date(rows[rows.length-1].t),tr=(t1-t0)||1;
-    const X=t=>P+(new Date(t)-t0)/tr*(W-2*P),Y=v=>10+(1-(v-mn)/rg)*(H-10-P);
-    const line=(arr,get,col)=>`<path d="${arr.map((h,i)=>(i?"L":"M")+X(h.t).toFixed(1)+" "+Y(get(h)).toFixed(1)).join(" ")}" fill="none" stroke="${col}" stroke-width="2.2" stroke-linejoin="round"/>`;
-    document.getElementById("chart").className="";
-    document.getElementById("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}">
-      <text x="2" y="${Y(mx)+4}" font-size="11" fill="currentColor" opacity=".6">${eur(mx)}</text>
-      <text x="2" y="${Y(mn)+4}" font-size="11" fill="currentColor" opacity=".6">${eur(mn)}</text>
-      ${line(rows,h=>h.best.price,"var(--good)")}
-      ${ns.length>=2?line(ns,h=>h.nonstop.price,"var(--accent)"):""}
-      <text x="${P}" y="${H-6}" font-size="11" fill="currentColor" opacity=".6">${local(rows[0].t)}</text>
-      <text x="${W-P}" y="${H-6}" font-size="11" fill="currentColor" opacity=".6" text-anchor="end">${local(rows[rows.length-1].t)}</text>
+    let mn=Math.min(...all),mx=Math.max(...all);const pad=Math.max(20,(mx-mn)*.1);mn-=pad;mx+=pad;
+    const t0=+new Date(rows[0].t),t1=+new Date(rows[rows.length-1].t),tr=(t1-t0)||1;
+    const X=t=>PL+(new Date(t)-t0)/tr*(W-PL-PR),Y=v=>PT+(1-(v-mn)/(mx-mn))*(H-PT-PB);
+    const path=(arr,get)=>arr.map((h,i)=>(i?"L":"M")+X(h.t).toFixed(1)+" "+Y(get(h)).toFixed(1)).join(" ");
+    const ticks=[mn+pad,(mn+mx)/2,mx-pad];
+    $("chart").className="";
+    $("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Fare history chart" style="display:block;width:100%;height:auto;font-family:Barlow,sans-serif">
+      ${ticks.map(v=>`<line x1="${PL}" x2="${W-PR}" y1="${Y(v)}" y2="${Y(v)}" stroke="#D5DCE7"/><text x="${PL-8}" y="${Y(v)+4}" font-size="13" fill="#5B6680" text-anchor="end">${eur(v)}</text>`).join("")}
+      <path d="${path(rows,h=>h.best.price)}" fill="none" stroke="#167A55" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      ${ns.length>=2?`<path d="${path(ns,h=>h.nonstop.price)}" fill="none" stroke="#14213D" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`:""}
+      <text x="${PL}" y="${H-6}" font-size="13" fill="#5B6680">${local(rows[0].t)}</text>
+      <text x="${W-PR}" y="${H-6}" font-size="13" fill="#5B6680" text-anchor="end">${local(rows[rows.length-1].t)}</text>
     </svg>`;
   }
 })();
