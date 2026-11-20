@@ -1,0 +1,303 @@
+{
+ "t": "2026-11-20T12:51:40+00:00",
+ "config": {
+  "from": [
+   "FRA",
+   "CGN",
+   "DUS",
+   "BRE",
+   "AMS"
+  ],
+  "home": "FRA",
+  "to": [
+   "HND",
+   "NRT"
+  ],
+  "outbound_date": "2027-07-25",
+  "return_date": "2027-08-13",
+  "adults": 1,
+  "nonstop_alert_eur": null,
+  "skyscanner_url": "https://www.skyscanner.de/transport/flights/{dep}/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1"
+ },
+ "best": {
+  "price": 1055,
+  "airlines": [
+   "ブリティッシュ・エアウェイズ"
+  ],
+  "stops": 1,
+  "dep_airport": "DUS",
+  "dep_time": "2027-07-25 07:30",
+  "arr_airport": "HND",
+  "arr_time": "2027-07-26 07:00",
+  "duration_min": 990,
+  "layovers": [
+   "LHR"
+  ],
+  "flight_numbers": [
+   "BA 925",
+   "BA 7"
+  ]
+ },
+ "nonstop": {
+  "price": 1210,
+  "airlines": [
+   "JAL"
+  ],
+  "stops": 0,
+  "dep_airport": "FRA",
+  "dep_time": "2027-07-25 20:10",
+  "arr_airport": "NRT",
+  "arr_time": "2027-07-26 16:15",
+  "duration_min": 785,
+  "layovers": [],
+  "flight_numbers": [
+   "JL 408"
+  ]
+ },
+ "home": {
+  "price": 1210,
+  "airlines": [
+   "JAL"
+  ],
+  "stops": 0,
+  "dep_airport": "FRA",
+  "dep_time": "2027-07-25 20:10",
+  "arr_airport": "NRT",
+  "arr_time": "2027-07-26 16:15",
+  "duration_min": 785,
+  "layovers": [],
+  "flight_numbers": [
+   "JL 408"
+  ]
+ },
+ "home_nonstop": {
+  "price": 1210,
+  "airlines": [
+   "JAL"
+  ],
+  "stops": 0,
+  "dep_airport": "FRA",
+  "dep_time": "2027-07-25 20:10",
+  "arr_airport": "NRT",
+  "arr_time": "2027-07-26 16:15",
+  "duration_min": 785,
+  "layovers": [],
+  "flight_numbers": [
+   "JL 408"
+  ]
+ },
+ "flights": [
+  {
+   "price": 1055,
+   "airlines": [
+    "ブリティッシュ・エアウェイズ"
+   ],
+   "stops": 1,
+   "dep_airport": "DUS",
+   "dep_time": "2027-07-25 07:30",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 07:00",
+   "duration_min": 990,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 925",
+    "BA 7"
+   ]
+  },
+  {
+   "price": 1055,
+   "airlines": [
+    "ブリティッシュ・エアウェイズ"
+   ],
+   "stops": 1,
+   "dep_airport": "DUS",
+   "dep_time": "2027-07-25 14:10",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-27 07:00",
+   "duration_min": 2030,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 921",
+    "BA 7"
+   ]
+  },
+  {
+   "price": 1094,
+   "airlines": [
+    "ブリティッシュ・エアウェイズ"
+   ],
+   "stops": 1,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 10:05",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 10:55",
+   "duration_min": 1070,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 429",
+    "BA 5"
+   ]
+  },
+  {
+   "price": 1163,
+   "airlines": [
+    "エティハド航空"
+   ],
+   "stops": 1,
+   "dep_airport": "DUS",
+   "dep_time": "2027-07-25 11:15",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 12:45",
+   "duration_min": 1110,
+   "layovers": [
+    "AUH"
+   ],
+   "flight_numbers": [
+    "EY 134",
+    "EY 800"
+   ]
+  },
+  {
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  {
+   "price": 1213,
+   "airlines": [
+    "フィンエアー"
+   ],
+   "stops": 1,
+   "dep_airport": "DUS",
+   "dep_time": "2027-07-25 08:55",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 13:05",
+   "duration_min": 1270,
+   "layovers": [
+    "HEL"
+   ],
+   "flight_numbers": [
+    "AY 1392",
+    "AY 73"
+   ]
+  },
+  {
+   "price": 1369,
+   "airlines": [
+    "ルフトハンザドイツ航空"
+   ],
+   "stops": 1,
+   "dep_airport": "BRE",
+   "dep_time": "2027-07-25 11:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 09:30",
+   "duration_min": 920,
+   "layovers": [
+    "FRA"
+   ],
+   "flight_numbers": [
+    "LH 53",
+    "LH 710"
+   ]
+  },
+  {
+   "price": 1434,
+   "airlines": [
+    "ルフトハンザドイツ航空"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 13:45",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 09:30",
+   "duration_min": 765,
+   "layovers": [],
+   "flight_numbers": [
+    "LH 710"
+   ]
+  },
+  {
+   "price": 1570,
+   "airlines": [
+    "KLM オランダ航空"
+   ],
+   "stops": 0,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 13:55",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 10:25",
+   "duration_min": 810,
+   "layovers": [],
+   "flight_numbers": [
+    "KL 861"
+   ]
+  },
+  {
+   "price": 1851,
+   "airlines": [
+    "ANA"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 12:10",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 08:10",
+   "duration_min": 780,
+   "layovers": [],
+   "flight_numbers": [
+    "NH 204"
+   ]
+  },
+  {
+   "price": 1862,
+   "airlines": [
+    "ANA"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:45",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 16:55",
+   "duration_min": 790,
+   "layovers": [],
+   "flight_numbers": [
+    "NH 224"
+   ]
+  },
+  {
+   "price": 1863,
+   "airlines": [
+    "ルフトハンザドイツ航空"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 14:05",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 09:45",
+   "duration_min": 760,
+   "layovers": [],
+   "flight_numbers": [
+    "LH 716"
+   ]
+  }
+ ],
+ "excluded_self_transfer": 2,
+ "price_insights": {}
+}
