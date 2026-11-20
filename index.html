@@ -29,6 +29,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;color:var(--sub);font-weight:600;font-size:11px;padding:6px 4px;border-bottom:1px solid var(--line)}
 td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}
 td.p{font-weight:800;white-space:nowrap}
+.alt{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;color:#fff;background:var(--warn);padding:3px 8px;border-radius:8px}
 .tag{font-size:10px;font-weight:700;padding:1px 6px;border-radius:6px;background:var(--good);color:#fff;margin-left:4px}
 svg{display:block;width:100%;height:auto}
 .legend{font-size:11px;color:var(--sub);display:flex;gap:14px;margin-top:6px}
@@ -40,7 +41,7 @@ svg{display:block;width:100%;height:auto}
 <div class="wrap">
   <h1>2027夏・一時帰国 航空券ウォッチ(3時間ごと自動更新)</h1>
   <div class="route">FRA <span>⇄</span> 東京</div>
-  <div class="dates">2027/7/25(日)→ 8/13(金)・大人1名・エコノミー・羽田/成田の安い方</div>
+  <div class="dates">2027/7/25(日)→ 8/13(金)・大人1名・エコノミー・羽田/成田の安い方<br>出発: フランクフルト基準(ケルン・デュッセルドルフ・ブレーメン・アムステルダムが安ければ表示)</div>
   <div class="updated" id="updated">読み込み中…</div>
 
   <div class="grid">
@@ -49,7 +50,7 @@ svg{display:block;width:100%;height:auto}
   </div>
   <div id="level"></div>
 
-  <a class="book" id="book" href="https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Skyscannerで予約・確認する</a>
+  <a class="book" id="book" href="https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Skyscannerで最安ルートを見る</a>
 
   <div class="card">
     <h2>価格の推移</h2>
@@ -71,8 +72,10 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const hm=m=>m?Math.floor(m/60)+"時間"+(m%60?m%60+"分":""):"";
 const tm=s=>s?s.slice(5).replace("-","/"):"";
 const local=iso=>new Date(iso).toLocaleString("ja-JP",{timeZone:"Europe/Berlin",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"});
-const apt={HND:"羽田",NRT:"成田"};
-function meta(f){return f?`${esc(f.airlines.join(" / "))}・${f.stops?"経由"+f.stops+"回("+esc(f.layovers.join(","))+")":"直行"}・${apt[f.arr_airport]||esc(f.arr_airport)}着・${hm(f.duration_min)}<br>往路 ${esc(tm(f.dep_time))} 発 → ${esc(tm(f.arr_time))} 着`:"見つかりませんでした";}
+const apt={HND:"羽田",NRT:"成田",FRA:"フランクフルト",CGN:"ケルン",DUS:"デュッセルドルフ",BRE:"ブレーメン",AMS:"アムステルダム"};
+const SKY="https://www.skyscanner.de/transport/flights/{dep}/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1";
+const sky=d=>SKY.replace("{dep}",String(d||"fra").toLowerCase());
+function meta(f){return f?`<b>${apt[f.dep_airport]||esc(f.dep_airport)}発</b>・${esc(f.airlines.join(" / "))}・${f.stops?"経由"+f.stops+"回("+esc(f.layovers.join(","))+")":"直行"}・${apt[f.arr_airport]||esc(f.arr_airport)}着・${hm(f.duration_min)}<br>往路 ${esc(tm(f.dep_time))} 発 → ${esc(tm(f.arr_time))} 着`:"見つかりませんでした";}
 
 async function getJSON(p){const r=await fetch(p+"?v="+Date.now());if(!r.ok)throw new Error(p);return r.json();}
 
@@ -87,6 +90,10 @@ async function getJSON(p){const r=await fetch(p+"?v="+Date.now());if(!r.ok)throw
   document.getElementById("bMeta").innerHTML=meta(latest.best);
   document.getElementById("nPrice").textContent=eur(latest.nonstop&&latest.nonstop.price);
   document.getElementById("nMeta").innerHTML=meta(latest.nonstop);
+  const altNote=(f,h,id)=>{if(f&&f.dep_airport!=="FRA"){const d=h?`フランクフルト発(${eur(h.price)})より ${eur(h.price-f.price)} 安い`:"フランクフルト発には該当なし";document.getElementById(id).insertAdjacentHTML("beforeend",`<div class="alt">周辺空港が安い: ${esc(d)}</div>`);}};
+  altNote(latest.best,latest.home,"bMeta");altNote(latest.nonstop,latest.home_nonstop,"nMeta");
+  if(latest.best)document.getElementById("book").href=sky(latest.best.dep_airport);
+  if(latest.best&&latest.best.dep_airport!=="FRA")document.getElementById("book").insertAdjacentHTML("afterend",`<a class="book" style="background:transparent;color:var(--accent);border:2px solid var(--accent);margin-top:8px;font-size:15px;padding:12px" href="${sky("fra")}" target="_blank" rel="noopener">フランクフルト発でSkyscannerを見る</a>`);
 
   const pi=latest.price_insights||{};
   if(pi.price_level){
@@ -96,7 +103,7 @@ async function getJSON(p){const r=await fetch(p+"?v="+Date.now());if(!r.ok)throw
   }
 
   const fl=latest.flights||[];
-  document.getElementById("list").innerHTML=fl.length?`<table><tr><th>価格</th><th>航空会社・経由</th><th>所要</th></tr>${fl.map(f=>`<tr><td class="p">${eur(f.price)}${f.stops?"":'<span class="tag">直行</span>'}</td><td>${esc(f.airlines.join(" / "))}<br><span class="meta">${f.stops?"経由 "+esc(f.layovers.join(", ")):"直行"}・${apt[f.arr_airport]||esc(f.arr_airport)}着</span></td><td>${hm(f.duration_min)}</td></tr>`).join("")}</table>`:"—";
+  document.getElementById("list").innerHTML=fl.length?`<table><tr><th>価格</th><th>出発・航空会社・経由</th><th>所要</th></tr>${fl.map(f=>`<tr><td class="p">${eur(f.price)}${f.stops?"":'<span class="tag">直行</span>'}</td><td><b>${apt[f.dep_airport]||esc(f.dep_airport)}</b>・${esc(f.airlines.join(" / "))}<br><span class="meta">${f.stops?"経由 "+esc(f.layovers.join(", ")):"直行"}・${apt[f.arr_airport]||esc(f.arr_airport)}着</span></td><td>${hm(f.duration_min)}</td></tr>`).join("")}</table>`:"—";
 
   const rows=history.filter(h=>h.best);
   const ns=rows.filter(h=>h.nonstop);

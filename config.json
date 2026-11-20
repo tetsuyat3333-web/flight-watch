@@ -1,9 +1,19 @@
 {
-  "from": "FRA",
-  "to": ["HND", "NRT"],
+  "from": [
+    "FRA",
+    "CGN",
+    "DUS",
+    "BRE",
+    "AMS"
+  ],
+  "home": "FRA",
+  "to": [
+    "HND",
+    "NRT"
+  ],
   "outbound_date": "2027-07-25",
   "return_date": "2027-08-13",
   "adults": 1,
   "nonstop_alert_eur": null,
-  "skyscanner_url": "https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1"
+  "skyscanner_url": "https://www.skyscanner.de/transport/flights/{dep}/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1"
 }
