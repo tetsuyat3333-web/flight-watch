@@ -1,5 +1,5 @@
 {
- "t": "2026-11-20T12:51:40+00:00",
+ "t": "2026-11-20T12:53:42+00:00",
  "config": {
   "from": [
    "FRA",
@@ -20,22 +20,22 @@
   "skyscanner_url": "https://www.skyscanner.de/transport/flights/{dep}/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1"
  },
  "best": {
-  "price": 1055,
+  "price": 1063,
   "airlines": [
-   "ブリティッシュ・エアウェイズ"
+   "Etihad"
   ],
   "stops": 1,
-  "dep_airport": "DUS",
-  "dep_time": "2027-07-25 07:30",
-  "arr_airport": "HND",
-  "arr_time": "2027-07-26 07:00",
-  "duration_min": 990,
+  "dep_airport": "FRA",
+  "dep_time": "2027-07-25 21:55",
+  "arr_airport": "NRT",
+  "arr_time": "2027-07-27 12:45",
+  "duration_min": 1910,
   "layovers": [
-   "LHR"
+   "AUH"
   ],
   "flight_numbers": [
-   "BA 925",
-   "BA 7"
+   "EY 124",
+   "EY 800"
   ]
  },
  "nonstop": {
@@ -55,19 +55,22 @@
   ]
  },
  "home": {
-  "price": 1210,
+  "price": 1063,
   "airlines": [
-   "JAL"
+   "Etihad"
   ],
-  "stops": 0,
+  "stops": 1,
   "dep_airport": "FRA",
-  "dep_time": "2027-07-25 20:10",
+  "dep_time": "2027-07-25 21:55",
   "arr_airport": "NRT",
-  "arr_time": "2027-07-26 16:15",
-  "duration_min": 785,
-  "layovers": [],
+  "arr_time": "2027-07-27 12:45",
+  "duration_min": 1910,
+  "layovers": [
+   "AUH"
+  ],
   "flight_numbers": [
-   "JL 408"
+   "EY 124",
+   "EY 800"
   ]
  },
  "home_nonstop": {
@@ -88,9 +91,28 @@
  },
  "flights": [
   {
-   "price": 1055,
+   "price": 1063,
    "airlines": [
-    "ブリティッシュ・エアウェイズ"
+    "Etihad"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 21:55",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-27 12:45",
+   "duration_min": 1910,
+   "layovers": [
+    "AUH"
+   ],
+   "flight_numbers": [
+    "EY 124",
+    "EY 800"
+   ]
+  },
+  {
+   "price": 1121,
+   "airlines": [
+    "British Airways"
    ],
    "stops": 1,
    "dep_airport": "DUS",
@@ -107,47 +129,9 @@
    ]
   },
   {
-   "price": 1055,
-   "airlines": [
-    "ブリティッシュ・エアウェイズ"
-   ],
-   "stops": 1,
-   "dep_airport": "DUS",
-   "dep_time": "2027-07-25 14:10",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-27 07:00",
-   "duration_min": 2030,
-   "layovers": [
-    "LHR"
-   ],
-   "flight_numbers": [
-    "BA 921",
-    "BA 7"
-   ]
-  },
-  {
-   "price": 1094,
-   "airlines": [
-    "ブリティッシュ・エアウェイズ"
-   ],
-   "stops": 1,
-   "dep_airport": "AMS",
-   "dep_time": "2027-07-25 10:05",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 10:55",
-   "duration_min": 1070,
-   "layovers": [
-    "LHR"
-   ],
-   "flight_numbers": [
-    "BA 429",
-    "BA 5"
-   ]
-  },
-  {
    "price": 1163,
    "airlines": [
-    "エティハド航空"
+    "Etihad"
    ],
    "stops": 1,
    "dep_airport": "DUS",
@@ -161,6 +145,25 @@
    "flight_numbers": [
     "EY 134",
     "EY 800"
+   ]
+  },
+  {
+   "price": 1174,
+   "airlines": [
+    "British Airways"
+   ],
+   "stops": 1,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 10:05",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 10:55",
+   "duration_min": 1070,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 429",
+    "BA 5"
    ]
   },
   {
@@ -182,7 +185,7 @@
   {
    "price": 1213,
    "airlines": [
-    "フィンエアー"
+    "Finnair"
    ],
    "stops": 1,
    "dep_airport": "DUS",
@@ -201,7 +204,7 @@
   {
    "price": 1369,
    "airlines": [
-    "ルフトハンザドイツ航空"
+    "Lufthansa"
    ],
    "stops": 1,
    "dep_airport": "BRE",
@@ -220,7 +223,7 @@
   {
    "price": 1434,
    "airlines": [
-    "ルフトハンザドイツ航空"
+    "Lufthansa"
    ],
    "stops": 0,
    "dep_airport": "FRA",
@@ -236,7 +239,7 @@
   {
    "price": 1570,
    "airlines": [
-    "KLM オランダ航空"
+    "KLM"
    ],
    "stops": 0,
    "dep_airport": "AMS",
@@ -266,7 +269,7 @@
    ]
   },
   {
-   "price": 1862,
+   "price": 1866,
    "airlines": [
     "ANA"
    ],
@@ -282,9 +285,9 @@
    ]
   },
   {
-   "price": 1863,
+   "price": 1868,
    "airlines": [
-    "ルフトハンザドイツ航空"
+    "Lufthansa"
    ],
    "stops": 0,
    "dep_airport": "FRA",
@@ -298,6 +301,6 @@
    ]
   }
  ],
- "excluded_self_transfer": 2,
+ "excluded_self_transfer": 1,
  "price_insights": {}
 }
