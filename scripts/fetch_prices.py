@@ -33,7 +33,7 @@ def fetch(api_key: str) -> dict:
         "adults": str(CONFIG.get("adults", 1)),
         "travel_class": "1",  # economy
         "currency": "EUR",
-        "hl": "ja",
+        "hl": "en",
         "gl": "de",
         "api_key": api_key,
     }
