@@ -49,6 +49,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh issue create \
-            --title "✈️ FRA⇄東京 値下がり $(date -u +%m/%d)" \
+            --title "✈️ FRA⇄Tokyo fare drop $(date -u +%d.%m.)" \
             --body-file alert.md \
             --assignee "${{ github.repository_owner }}"

@@ -20,7 +20,7 @@ const cors = {
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json" } });
 const html = (text: string) =>
-  new Response(`<!DOCTYPE html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><body style="font-family:sans-serif;padding:32px;text-align:center"><p>${text}</p><p><a href="${SITE}">サイトに戻る</a></p>`, {
+  new Response(`<!DOCTYPE html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><body style="font-family:sans-serif;padding:32px;text-align:center"><p>${text}</p><p><a href="${SITE}">Back to the site</a></p>`, {
     headers: { "Content-Type": "text/html; charset=utf-8" },
   });
 
@@ -49,45 +49,45 @@ async function repoJson(path: string) {
 }
 
 const fmt = (f: any) =>
-  f ? `€${f.price} ${f.airlines.join("/")} ${f.dep_airport}→${f.arr_airport} ${f.stops ? `経由${f.stops}回` : "直行"}` : "—";
+  f ? `€${f.price} ${f.airlines.join("/")} ${f.dep_airport}→${f.arr_airport} ${f.stops ? `${f.stops} stop(s)` : "nonstop"}` : "—";
 
 async function subscribe(req: Request) {
   const { email } = await req.json().catch(() => ({}));
   const e = String(email || "").trim().toLowerCase();
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e) || e.length > 254) return json({ ok: false, error: "メールアドレスの形式が正しくありません" }, 400);
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e) || e.length > 254) return json({ ok: false, error: "Please enter a valid email address" }, 400);
 
   const { data: existing } = await db.from("fw_subscribers").select("id").eq("email", e).maybeSingle();
   if (existing) return json({ ok: true, already: true });
 
   const { count } = await db.from("fw_subscribers").select("id", { count: "exact", head: true });
-  if ((count ?? 0) >= MAX_SUBSCRIBERS) return json({ ok: false, error: "登録数の上限に達しています" }, 429);
+  if ((count ?? 0) >= MAX_SUBSCRIBERS) return json({ ok: false, error: "The subscriber limit has been reached" }, 429);
 
   const { data, error } = await db.from("fw_subscribers").insert({ email: e }).select("token").single();
-  if (error) return json({ ok: false, error: "登録できませんでした" }, 500);
+  if (error) return json({ ok: false, error: "Could not subscribe" }, 500);
 
   let now = "";
   try {
     const latest = await repoJson("data/latest.json");
-    now = `\n\n今の最安値\n全体: ${fmt(latest.best)}\n直行: ${fmt(latest.nonstop)}`;
+    now = `\n\nLowest fares right now\nOverall: ${fmt(latest.best)}\nNonstop: ${fmt(latest.nonstop)}`;
   } catch (_) { /* optional */ }
   try {
     await sendEmail(
       e,
-      "✈️ FRA⇄東京 値下がり通知に登録しました",
-      `2027/7/25〜8/13 の往復で、最安値や直行便の最安値が下がったらこのアドレスにお知らせします。${now}\n\nサイト: ${SITE}\n配信停止: ${FN_URL}?action=unsubscribe&token=${data.token}`,
+      "✈️ You are subscribed to FRA⇄Tokyo fare alerts",
+      `We will email you when the cheapest overall or cheapest nonstop round-trip fare for 25 Jul – 13 Aug 2027 drops.${now}\n\nSite: ${SITE}\nUnsubscribe: ${FN_URL}?action=unsubscribe&token=${data.token}`,
       SITE,
     );
   } catch (err) {
-    return json({ ok: true, warning: "登録はできましたが確認メールの送信に失敗しました", detail: String(err) });
+    return json({ ok: true, warning: "Subscribed, but the confirmation email could not be sent", detail: String(err) });
   }
   return json({ ok: true });
 }
 
 async function unsubscribe(url: URL) {
   const token = url.searchParams.get("token") || "";
-  if (!/^[0-9a-f-]{36}$/i.test(token)) return html("リンクが正しくありません。");
+  if (!/^[0-9a-f-]{36}$/i.test(token)) return html("This link is not valid.");
   await db.from("fw_subscribers").delete().eq("token", token);
-  return html("配信を停止しました。");
+  return html("You have been unsubscribed.");
 }
 
 async function notify() {
@@ -112,7 +112,7 @@ async function notify() {
   const errors: string[] = [];
   for (const s of subs ?? []) {
     try {
-      await sendEmail(s.email, n.title, `${n.message}\n\n予約(Skyscanner): ${n.click}\nサイト: ${SITE}\n配信停止: ${FN_URL}?action=unsubscribe&token=${s.token}`, n.click);
+      await sendEmail(s.email, n.title, `${n.message}\n\nBook on Skyscanner: ${n.click}\nSite: ${SITE}\nUnsubscribe: ${FN_URL}?action=unsubscribe&token=${s.token}`, n.click);
       sent++;
     } catch (err) {
       errors.push(String(err).slice(0, 120));

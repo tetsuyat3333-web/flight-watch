@@ -65,7 +65,7 @@ def summarize(option: dict) -> dict:
 
 
 def fmt(f: dict) -> str:
-    stops = "直行" if f["stops"] == 0 else f"経由{f['stops']}回({','.join(f['layovers'])})"
+    stops = "nonstop" if f["stops"] == 0 else f"{f['stops']} stop(s) via {','.join(f['layovers'])}"
     return f"€{f['price']} {'/'.join(f['airlines'])} {f['dep_airport']}→{f['arr_airport']} {stops}"
 
 
@@ -145,27 +145,27 @@ def main() -> int:
     # alerts: new record low overall / nonstop, or nonstop under the target set in config.json
     lines = []
     if best and prev_low is not None and best["price"] < prev_low:
-        lines.append(f"- 全体の最安値を更新: **€{best['price']}**(前回までの最安 €{prev_low}){best['dep_airport']}発・{', '.join(best['airlines'])}・経由{best['stops']}回・{best['arr_airport']}着")
+        lines.append(f"- New lowest overall fare: **€{best['price']}** (previous low €{prev_low}) — {best['dep_airport']}→{best['arr_airport']}, {', '.join(best['airlines'])}, {best['stops']} stop(s)")
     if best_nonstop and prev_ns_low is not None and best_nonstop["price"] < prev_ns_low:
-        lines.append(f"- 直行便の最安値を更新: **€{best_nonstop['price']}**(前回までの最安 €{prev_ns_low}){best_nonstop['dep_airport']}発・{', '.join(best_nonstop['airlines'])}・{best_nonstop['arr_airport']}着")
+        lines.append(f"- New lowest nonstop fare: **€{best_nonstop['price']}** (previous low €{prev_ns_low}) — {best_nonstop['dep_airport']}→{best_nonstop['arr_airport']}, {', '.join(best_nonstop['airlines'])}")
     target = CONFIG.get("nonstop_alert_eur")
     if best_nonstop and target and best_nonstop["price"] <= target:
-        lines.append(f"- 直行便が目標 €{target} 以下: **€{best_nonstop['price']}**({', '.join(best_nonstop['airlines'])})")
+        lines.append(f"- Nonstop fare is at or below your €{target} target: **€{best_nonstop['price']}** ({', '.join(best_nonstop['airlines'])})")
     dep = ((best or best_nonstop or {}).get("dep_airport") or "fra").lower()
     sky = CONFIG["skyscanner_url"].format(dep=dep)
     # the Supabase function 'fw' reads this from history.json and emails subscribers
     if lines:
-        row["notify"] = {"title": "✈️ FRA⇄東京 値下がり!",
+        row["notify"] = {"title": "✈️ FRA⇄Tokyo fare drop!",
                          "message": "\n".join(l.replace("**", "").lstrip("- ") for l in lines), "click": sky}
     elif os.environ.get("NOTIFY_SUMMARY") == "1":
         msg = []
-        if best: msg.append("全体最安: " + fmt(best))
-        if best_nonstop: msg.append("直行最安: " + fmt(best_nonstop))
-        row["notify"] = {"title": "✈️ FRA⇄東京 現在の最安値", "message": "\n".join(msg) or "結果なし", "click": sky}
+        if best: msg.append("Cheapest overall: " + fmt(best))
+        if best_nonstop: msg.append("Cheapest nonstop: " + fmt(best_nonstop))
+        row["notify"] = {"title": "✈️ FRA⇄Tokyo current lowest fares", "message": "\n".join(msg) or "No results", "click": sky}
     if row.get("notify"):
         (DATA / "history.json").write_text(json.dumps(history, ensure_ascii=False, indent=1), encoding="utf-8")
     if lines:
-        body = "\n".join(lines) + f"\n\n予約(Skyscanner): {CONFIG['skyscanner_url'].format(dep=dep)}\n"
+        body = "\n".join(lines) + f"\n\nBook on Skyscanner: {CONFIG['skyscanner_url'].format(dep=dep)}\n"
         (ROOT / "alert.md").write_text(body, encoding="utf-8")
 
     print(json.dumps(row, ensure_ascii=False))
