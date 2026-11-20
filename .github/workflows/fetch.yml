@@ -29,6 +29,7 @@ jobs:
       - name: Fetch prices
         env:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          NOTIFY_SUMMARY: ${{ github.event_name != 'schedule' && '1' || '0' }}
         run: python scripts/fetch_prices.py
 
       - name: Commit data
@@ -38,6 +39,9 @@ jobs:
           git add data/
           git diff --cached --quiet || git commit -m "prices: $(date -u +%Y-%m-%dT%H:%MZ)"
           git push
+
+      - name: Email subscribers (Supabase)
+        run: curl -fsS -X POST "$(python -c "import json;print(json.load(open('config.json'))['notify_endpoint'])")" || true
 
       - name: Notify on new low
         if: hashFiles('alert.md') != ''

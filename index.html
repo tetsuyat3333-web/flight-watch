@@ -52,6 +52,16 @@ svg{display:block;width:100%;height:auto}
 
   <a class="book" id="book" href="https://www.skyscanner.de/transport/flights/fra/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1" target="_blank" rel="noopener">Skyscannerで最安ルートを見る</a>
 
+
+  <div class="card" id="sub">
+    <h2>📩 値下がりをメールで受け取る</h2>
+    <div class="meta" style="margin:0 0 10px">全体の最安値・直行便の最安値が下がったときだけメールが届きます(3時間ごとにチェック)。</div>
+    <form id="subForm" style="display:flex;gap:8px">
+      <input id="subEmail" type="email" required placeholder="メールアドレス" autocomplete="email" style="flex:1;min-width:0;font:inherit;font-size:16px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)">
+      <button type="submit" style="font:inherit;font-weight:800;border:0;border-radius:12px;padding:12px 16px;background:var(--accent);color:#fff">登録</button>
+    </form>
+    <div class="meta" id="subMsg" style="margin-top:8px"></div>
+  </div>
   <div class="card">
     <h2>価格の推移</h2>
     <div id="chart" class="empty">データがたまると表示されます</div>
@@ -80,6 +90,21 @@ function meta(f){return f?`<b>${apt[f.dep_airport]||esc(f.dep_airport)}発</b>�
 
 async function getJSON(p){const r=await fetch(p+"?v="+Date.now());if(!r.ok)throw new Error(p);return r.json();}
 
+
+document.getElementById("subForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=document.getElementById("subMsg"),btn=e.target.querySelector("button");
+  btn.disabled=true;m.textContent="登録中…";
+  try{
+    const r=await fetch("https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:document.getElementById("subEmail").value})});
+    const d=await r.json();
+    if(!d.ok)m.textContent="⚠️ "+(d.error||"登録できませんでした");
+    else if(d.already)m.textContent="このアドレスはすでに登録されています。";
+    else if(d.warning)m.textContent="✅ 登録しました(確認メールの送信には失敗しました)";
+    else{m.textContent="✅ 登録しました。確認メールを送りました(迷惑メールフォルダも確認してください)。";document.getElementById("subEmail").value="";}
+  }catch(err){m.textContent="⚠️ 通信エラー。もう一度お試しください。";}
+  btn.disabled=false;
+});
 (async()=>{
   let latest=null,history=[];
   try{latest=await getJSON("data/latest.json");}catch(e){}

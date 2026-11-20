@@ -64,6 +64,11 @@ def summarize(option: dict) -> dict:
     }
 
 
+def fmt(f: dict) -> str:
+    stops = "直行" if f["stops"] == 0 else f"経由{f['stops']}回({','.join(f['layovers'])})"
+    return f"€{f['price']} {'/'.join(f['airlines'])} {f['dep_airport']}→{f['arr_airport']} {stops}"
+
+
 def load(path: Path, default):
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -146,8 +151,20 @@ def main() -> int:
     target = CONFIG.get("nonstop_alert_eur")
     if best_nonstop and target and best_nonstop["price"] <= target:
         lines.append(f"- 直行便が目標 €{target} 以下: **€{best_nonstop['price']}**({', '.join(best_nonstop['airlines'])})")
+    dep = ((best or best_nonstop or {}).get("dep_airport") or "fra").lower()
+    sky = CONFIG["skyscanner_url"].format(dep=dep)
+    # the Supabase function 'fw' reads this from history.json and emails subscribers
     if lines:
-        dep = (best or best_nonstop)["dep_airport"].lower()
+        row["notify"] = {"title": "✈️ FRA⇄東京 値下がり!",
+                         "message": "\n".join(l.replace("**", "").lstrip("- ") for l in lines), "click": sky}
+    elif os.environ.get("NOTIFY_SUMMARY") == "1":
+        msg = []
+        if best: msg.append("全体最安: " + fmt(best))
+        if best_nonstop: msg.append("直行最安: " + fmt(best_nonstop))
+        row["notify"] = {"title": "✈️ FRA⇄東京 現在の最安値", "message": "\n".join(msg) or "結果なし", "click": sky}
+    if row.get("notify"):
+        (DATA / "history.json").write_text(json.dumps(history, ensure_ascii=False, indent=1), encoding="utf-8")
+    if lines:
         body = "\n".join(lines) + f"\n\n予約(Skyscanner): {CONFIG['skyscanner_url'].format(dep=dep)}\n"
         (ROOT / "alert.md").write_text(body, encoding="utf-8")
 
