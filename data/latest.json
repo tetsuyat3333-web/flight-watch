@@ -1,5 +1,5 @@
 {
- "t": "2026-11-21T16:45:06+00:00",
+ "t": "2026-11-21T23:09:59+00:00",
  "config": {
   "from": [
    "FRA",
@@ -111,7 +111,7 @@
    ]
   },
   {
-   "price": 1121,
+   "price": 1068,
    "airlines": [
     "British Airways"
    ],
@@ -127,6 +127,25 @@
    "flight_numbers": [
     "BA 925",
     "BA 7"
+   ]
+  },
+  {
+   "price": 1094,
+   "airlines": [
+    "British Airways"
+   ],
+   "stops": 1,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 10:05",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 10:55",
+   "duration_min": 1070,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 429",
+    "BA 5"
    ]
   },
   {
@@ -149,25 +168,6 @@
    ]
   },
   {
-   "price": 1194,
-   "airlines": [
-    "British Airways"
-   ],
-   "stops": 1,
-   "dep_airport": "AMS",
-   "dep_time": "2027-07-25 08:10",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 10:55",
-   "duration_min": 1185,
-   "layovers": [
-    "LHR"
-   ],
-   "flight_numbers": [
-    "BA 445",
-    "BA 5"
-   ]
-  },
-  {
    "price": 1210,
    "airlines": [
     "JAL"
@@ -184,7 +184,7 @@
    ]
   },
   {
-   "price": 1250,
+   "price": 1239,
    "airlines": [
     "Finnair"
    ],
@@ -203,7 +203,7 @@
    ]
   },
   {
-   "price": 1304,
+   "price": 1292,
    "airlines": [
     "Finnair"
    ],
@@ -222,22 +222,23 @@
    ]
   },
   {
-   "price": 1307,
+   "price": 1348,
    "airlines": [
-    "Finnair"
+    "Lufthansa",
+    "ANA"
    ],
    "stops": 1,
-   "dep_airport": "AMS",
-   "dep_time": "2027-07-25 11:55",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-26 13:05",
-   "duration_min": 1090,
+   "dep_airport": "BRE",
+   "dep_time": "2027-07-25 06:10",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 06:55",
+   "duration_min": 1065,
    "layovers": [
-    "HEL"
+    "MUC"
    ],
    "flight_numbers": [
-    "AY 1302",
-    "AY 73"
+    "LH 2199",
+    "NH 218"
    ]
   },
   {
