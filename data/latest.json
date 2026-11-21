@@ -1,5 +1,5 @@
 {
- "t": "2026-11-21T06:59:19+00:00",
+ "t": "2026-11-21T16:45:06+00:00",
  "config": {
   "from": [
    "FRA",
@@ -149,7 +149,7 @@
    ]
   },
   {
-   "price": 1174,
+   "price": 1194,
    "airlines": [
     "British Airways"
    ],
@@ -203,6 +203,25 @@
    ]
   },
   {
+   "price": 1304,
+   "airlines": [
+    "Finnair"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 11:30",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 13:05",
+   "duration_min": 1115,
+   "layovers": [
+    "HEL"
+   ],
+   "flight_numbers": [
+    "AY 1412",
+    "AY 73"
+   ]
+  },
+  {
    "price": 1307,
    "airlines": [
     "Finnair"
@@ -238,7 +257,7 @@
    ]
   },
   {
-   "price": 1570,
+   "price": 1598,
    "airlines": [
     "KLM"
    ],
