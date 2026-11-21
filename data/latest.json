@@ -1,5 +1,5 @@
 {
- "t": "2026-11-20T22:13:38+00:00",
+ "t": "2026-11-21T06:59:19+00:00",
  "config": {
   "from": [
    "FRA",
@@ -21,7 +21,7 @@
   "notify_endpoint": "https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=notify"
  },
  "best": {
-  "price": 1063,
+  "price": 1062,
   "airlines": [
    "Etihad"
   ],
@@ -56,7 +56,7 @@
   ]
  },
  "home": {
-  "price": 1063,
+  "price": 1062,
   "airlines": [
    "Etihad"
   ],
@@ -92,7 +92,7 @@
  },
  "flights": [
   {
-   "price": 1063,
+   "price": 1062,
    "airlines": [
     "Etihad"
    ],
@@ -155,15 +155,15 @@
    ],
    "stops": 1,
    "dep_airport": "AMS",
-   "dep_time": "2027-07-25 10:05",
+   "dep_time": "2027-07-25 08:10",
    "arr_airport": "HND",
    "arr_time": "2027-07-26 10:55",
-   "duration_min": 1070,
+   "duration_min": 1185,
    "layovers": [
     "LHR"
    ],
    "flight_numbers": [
-    "BA 429",
+    "BA 445",
     "BA 5"
    ]
   },
@@ -184,7 +184,7 @@
    ]
   },
   {
-   "price": 1213,
+   "price": 1250,
    "airlines": [
     "Finnair"
    ],
@@ -203,42 +203,22 @@
    ]
   },
   {
-   "price": 1369,
+   "price": 1307,
    "airlines": [
-    "Lufthansa"
+    "Finnair"
    ],
    "stops": 1,
-   "dep_airport": "BRE",
-   "dep_time": "2027-07-25 11:10",
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 11:55",
    "arr_airport": "NRT",
-   "arr_time": "2027-07-26 09:30",
-   "duration_min": 920,
+   "arr_time": "2027-07-26 13:05",
+   "duration_min": 1090,
    "layovers": [
-    "FRA"
+    "HEL"
    ],
    "flight_numbers": [
-    "LH 53",
-    "LH 710"
-   ]
-  },
-  {
-   "price": 1372,
-   "airlines": [
-    "Lufthansa",
-    "ANA"
-   ],
-   "stops": 1,
-   "dep_airport": "BRE",
-   "dep_time": "2027-07-25 06:10",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 06:55",
-   "duration_min": 1065,
-   "layovers": [
-    "MUC"
-   ],
-   "flight_numbers": [
-    "LH 2199",
-    "NH 218"
+    "AY 1302",
+    "AY 73"
    ]
   },
   {
