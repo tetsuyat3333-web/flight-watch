@@ -1,5 +1,5 @@
 {
- "t": "2026-11-21T23:09:59+00:00",
+ "t": "2026-11-22T06:39:51+00:00",
  "config": {
   "from": [
    "FRA",
@@ -21,22 +21,22 @@
   "notify_endpoint": "https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=notify"
  },
  "best": {
-  "price": 1062,
+  "price": 1121,
   "airlines": [
-   "Etihad"
+   "British Airways"
   ],
   "stops": 1,
-  "dep_airport": "FRA",
-  "dep_time": "2027-07-25 21:55",
-  "arr_airport": "NRT",
-  "arr_time": "2027-07-27 12:45",
-  "duration_min": 1910,
+  "dep_airport": "DUS",
+  "dep_time": "2027-07-25 07:30",
+  "arr_airport": "HND",
+  "arr_time": "2027-07-26 07:00",
+  "duration_min": 990,
   "layovers": [
-   "AUH"
+   "LHR"
   ],
   "flight_numbers": [
-   "EY 124",
-   "EY 800"
+   "BA 925",
+   "BA 7"
   ]
  },
  "nonstop": {
@@ -56,22 +56,19 @@
   ]
  },
  "home": {
-  "price": 1062,
+  "price": 1210,
   "airlines": [
-   "Etihad"
+   "JAL"
   ],
-  "stops": 1,
+  "stops": 0,
   "dep_airport": "FRA",
-  "dep_time": "2027-07-25 21:55",
+  "dep_time": "2027-07-25 20:10",
   "arr_airport": "NRT",
-  "arr_time": "2027-07-27 12:45",
-  "duration_min": 1910,
-  "layovers": [
-   "AUH"
-  ],
+  "arr_time": "2027-07-26 16:15",
+  "duration_min": 785,
+  "layovers": [],
   "flight_numbers": [
-   "EY 124",
-   "EY 800"
+   "JL 408"
   ]
  },
  "home_nonstop": {
@@ -92,26 +89,7 @@
  },
  "flights": [
   {
-   "price": 1062,
-   "airlines": [
-    "Etihad"
-   ],
-   "stops": 1,
-   "dep_airport": "FRA",
-   "dep_time": "2027-07-25 21:55",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-27 12:45",
-   "duration_min": 1910,
-   "layovers": [
-    "AUH"
-   ],
-   "flight_numbers": [
-    "EY 124",
-    "EY 800"
-   ]
-  },
-  {
-   "price": 1068,
+   "price": 1121,
    "airlines": [
     "British Airways"
    ],
@@ -127,25 +105,6 @@
    "flight_numbers": [
     "BA 925",
     "BA 7"
-   ]
-  },
-  {
-   "price": 1094,
-   "airlines": [
-    "British Airways"
-   ],
-   "stops": 1,
-   "dep_airport": "AMS",
-   "dep_time": "2027-07-25 10:05",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 10:55",
-   "duration_min": 1070,
-   "layovers": [
-    "LHR"
-   ],
-   "flight_numbers": [
-    "BA 429",
-    "BA 5"
    ]
   },
   {
@@ -165,6 +124,25 @@
    "flight_numbers": [
     "EY 134",
     "EY 800"
+   ]
+  },
+  {
+   "price": 1174,
+   "airlines": [
+    "British Airways"
+   ],
+   "stops": 1,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 08:10",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 10:55",
+   "duration_min": 1185,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 445",
+    "BA 5"
    ]
   },
   {
@@ -203,42 +181,22 @@
    ]
   },
   {
-   "price": 1292,
+   "price": 1345,
    "airlines": [
     "Finnair"
    ],
    "stops": 1,
-   "dep_airport": "FRA",
-   "dep_time": "2027-07-25 11:30",
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 11:55",
    "arr_airport": "NRT",
    "arr_time": "2027-07-26 13:05",
-   "duration_min": 1115,
+   "duration_min": 1090,
    "layovers": [
     "HEL"
    ],
    "flight_numbers": [
-    "AY 1412",
+    "AY 1302",
     "AY 73"
-   ]
-  },
-  {
-   "price": 1348,
-   "airlines": [
-    "Lufthansa",
-    "ANA"
-   ],
-   "stops": 1,
-   "dep_airport": "BRE",
-   "dep_time": "2027-07-25 06:10",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 06:55",
-   "duration_min": 1065,
-   "layovers": [
-    "MUC"
-   ],
-   "flight_numbers": [
-    "LH 2199",
-    "NH 218"
    ]
   },
   {
