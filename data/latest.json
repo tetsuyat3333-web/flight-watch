@@ -1,5 +1,5 @@
 {
- "t": "2026-11-22T06:39:51+00:00",
+ "t": "2026-11-22T17:06:56+00:00",
  "config": {
   "from": [
    "FRA",
@@ -108,26 +108,7 @@
    ]
   },
   {
-   "price": 1163,
-   "airlines": [
-    "Etihad"
-   ],
-   "stops": 1,
-   "dep_airport": "DUS",
-   "dep_time": "2027-07-25 11:15",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-26 12:45",
-   "duration_min": 1110,
-   "layovers": [
-    "AUH"
-   ],
-   "flight_numbers": [
-    "EY 134",
-    "EY 800"
-   ]
-  },
-  {
-   "price": 1174,
+   "price": 1194,
    "airlines": [
     "British Airways"
    ],
@@ -181,6 +162,25 @@
    ]
   },
   {
+   "price": 1255,
+   "airlines": [
+    "Etihad"
+   ],
+   "stops": 1,
+   "dep_airport": "DUS",
+   "dep_time": "2027-07-25 11:15",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 12:45",
+   "duration_min": 1110,
+   "layovers": [
+    "AUH"
+   ],
+   "flight_numbers": [
+    "EY 134",
+    "EY 800"
+   ]
+  },
+  {
    "price": 1345,
    "airlines": [
     "Finnair"
@@ -222,10 +222,10 @@
    ],
    "stops": 0,
    "dep_airport": "AMS",
-   "dep_time": "2027-07-25 13:55",
+   "dep_time": "2027-07-25 14:00",
    "arr_airport": "NRT",
    "arr_time": "2027-07-26 10:25",
-   "duration_min": 810,
+   "duration_min": 805,
    "layovers": [],
    "flight_numbers": [
     "KL 861"
