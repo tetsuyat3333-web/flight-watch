@@ -1,5 +1,5 @@
 {
- "t": "2026-11-23T21:16:58+00:00",
+ "t": "2026-11-24T05:20:59+00:00",
  "config": {
   "from": [
    "FRA",
@@ -40,7 +40,7 @@
   ]
  },
  "nonstop": {
-  "price": 1210,
+  "price": 1211,
   "airlines": [
    "JAL"
   ],
@@ -56,7 +56,7 @@
   ]
  },
  "home": {
-  "price": 1210,
+  "price": 1211,
   "airlines": [
    "JAL"
   ],
@@ -72,7 +72,7 @@
   ]
  },
  "home_nonstop": {
-  "price": 1210,
+  "price": 1211,
   "airlines": [
    "JAL"
   ],
@@ -127,7 +127,7 @@
    ]
   },
   {
-   "price": 1210,
+   "price": 1211,
    "airlines": [
     "JAL"
    ],
@@ -140,25 +140,6 @@
    "layovers": [],
    "flight_numbers": [
     "JL 408"
-   ]
-  },
-  {
-   "price": 1246,
-   "airlines": [
-    "Cathay Pacific"
-   ],
-   "stops": 1,
-   "dep_airport": "FRA",
-   "dep_time": "2027-07-25 13:40",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-26 13:40",
-   "duration_min": 1020,
-   "layovers": [
-    "HKG"
-   ],
-   "flight_numbers": [
-    "CX 288",
-    "CX 526"
    ]
   },
   {
@@ -200,7 +181,7 @@
    ]
   },
   {
-   "price": 1295,
+   "price": 1268,
    "airlines": [
     "Finnair"
    ],
@@ -235,7 +216,7 @@
    ]
   },
   {
-   "price": 1593,
+   "price": 1594,
    "airlines": [
     "KLM"
    ],
@@ -251,7 +232,7 @@
    ]
   },
   {
-   "price": 1851,
+   "price": 1852,
    "airlines": [
     "ANA"
    ],
