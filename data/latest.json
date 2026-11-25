@@ -1,5 +1,5 @@
 {
- "t": "2026-11-24T17:37:13+00:00",
+ "t": "2026-11-25T02:22:11+00:00",
  "config": {
   "from": [
    "FRA",
@@ -21,26 +21,26 @@
   "notify_endpoint": "https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=notify"
  },
  "best": {
-  "price": 1079,
+  "price": 1146,
   "airlines": [
    "British Airways"
   ],
   "stops": 1,
-  "dep_airport": "AMS",
-  "dep_time": "2027-07-25 10:05",
+  "dep_airport": "FRA",
+  "dep_time": "2027-07-25 06:40",
   "arr_airport": "HND",
-  "arr_time": "2027-07-26 10:55",
-  "duration_min": 1070,
+  "arr_time": "2027-07-26 07:00",
+  "duration_min": 1040,
   "layovers": [
    "LHR"
   ],
   "flight_numbers": [
-   "BA 429",
-   "BA 5"
+   "BA 911",
+   "BA 7"
   ]
  },
  "nonstop": {
-  "price": 1210,
+  "price": 1211,
   "airlines": [
    "JAL"
   ],
@@ -56,23 +56,26 @@
   ]
  },
  "home": {
-  "price": 1210,
+  "price": 1146,
   "airlines": [
-   "JAL"
+   "British Airways"
   ],
-  "stops": 0,
+  "stops": 1,
   "dep_airport": "FRA",
-  "dep_time": "2027-07-25 20:10",
-  "arr_airport": "NRT",
-  "arr_time": "2027-07-26 16:15",
-  "duration_min": 785,
-  "layovers": [],
+  "dep_time": "2027-07-25 06:40",
+  "arr_airport": "HND",
+  "arr_time": "2027-07-26 07:00",
+  "duration_min": 1040,
+  "layovers": [
+   "LHR"
+  ],
   "flight_numbers": [
-   "JL 408"
+   "BA 911",
+   "BA 7"
   ]
  },
  "home_nonstop": {
-  "price": 1210,
+  "price": 1211,
   "airlines": [
    "JAL"
   ],
@@ -89,45 +92,45 @@
  },
  "flights": [
   {
-   "price": 1079,
+   "price": 1146,
+   "airlines": [
+    "British Airways"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 06:40",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 07:00",
+   "duration_min": 1040,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 911",
+    "BA 7"
+   ]
+  },
+  {
+   "price": 1194,
    "airlines": [
     "British Airways"
    ],
    "stops": 1,
    "dep_airport": "AMS",
-   "dep_time": "2027-07-25 10:05",
+   "dep_time": "2027-07-25 08:10",
    "arr_airport": "HND",
    "arr_time": "2027-07-26 10:55",
-   "duration_min": 1070,
+   "duration_min": 1185,
    "layovers": [
     "LHR"
    ],
    "flight_numbers": [
-    "BA 429",
+    "BA 445",
     "BA 5"
    ]
   },
   {
-   "price": 1121,
-   "airlines": [
-    "British Airways"
-   ],
-   "stops": 1,
-   "dep_airport": "DUS",
-   "dep_time": "2027-07-25 07:30",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 07:00",
-   "duration_min": 990,
-   "layovers": [
-    "LHR"
-   ],
-   "flight_numbers": [
-    "BA 925",
-    "BA 7"
-   ]
-  },
-  {
-   "price": 1210,
+   "price": 1211,
    "airlines": [
     "JAL"
    ],
@@ -143,26 +146,7 @@
    ]
   },
   {
-   "price": 1246,
-   "airlines": [
-    "Cathay Pacific"
-   ],
-   "stops": 1,
-   "dep_airport": "FRA",
-   "dep_time": "2027-07-25 13:40",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-26 13:40",
-   "duration_min": 1020,
-   "layovers": [
-    "HKG"
-   ],
-   "flight_numbers": [
-    "CX 288",
-    "CX 526"
-   ]
-  },
-  {
-   "price": 1250,
+   "price": 1213,
    "airlines": [
     "Finnair"
    ],
@@ -181,22 +165,22 @@
    ]
   },
   {
-   "price": 1255,
+   "price": 1214,
    "airlines": [
-    "Etihad"
+    "British Airways"
    ],
    "stops": 1,
-   "dep_airport": "DUS",
-   "dep_time": "2027-07-25 11:15",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-26 12:45",
-   "duration_min": 1110,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 10:05",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 10:55",
+   "duration_min": 1070,
    "layovers": [
-    "AUH"
+    "LHR"
    ],
    "flight_numbers": [
-    "EY 134",
-    "EY 800"
+    "BA 429",
+    "BA 5"
    ]
   },
   {
@@ -251,7 +235,7 @@
    ]
   },
   {
-   "price": 1851,
+   "price": 1852,
    "airlines": [
     "ANA"
    ],
