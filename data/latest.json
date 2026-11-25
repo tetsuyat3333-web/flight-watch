@@ -1,5 +1,5 @@
 {
- "t": "2026-11-25T12:46:00+00:00",
+ "t": "2026-11-25T23:36:40+00:00",
  "config": {
   "from": [
    "FRA",
@@ -21,7 +21,7 @@
   "notify_endpoint": "https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=notify"
  },
  "best": {
-  "price": 1094,
+  "price": 1079,
   "airlines": [
    "British Airways"
   ],
@@ -56,22 +56,19 @@
   ]
  },
  "home": {
-  "price": 1146,
+  "price": 1211,
   "airlines": [
-   "British Airways"
+   "JAL"
   ],
-  "stops": 1,
+  "stops": 0,
   "dep_airport": "FRA",
-  "dep_time": "2027-07-25 06:40",
-  "arr_airport": "HND",
-  "arr_time": "2027-07-26 07:00",
-  "duration_min": 1040,
-  "layovers": [
-   "LHR"
-  ],
+  "dep_time": "2027-07-25 20:10",
+  "arr_airport": "NRT",
+  "arr_time": "2027-07-26 16:15",
+  "duration_min": 785,
+  "layovers": [],
   "flight_numbers": [
-   "BA 911",
-   "BA 7"
+   "JL 408"
   ]
  },
  "home_nonstop": {
@@ -92,7 +89,7 @@
  },
  "flights": [
   {
-   "price": 1094,
+   "price": 1079,
    "airlines": [
     "British Airways"
    ],
@@ -108,25 +105,6 @@
    "flight_numbers": [
     "BA 429",
     "BA 5"
-   ]
-  },
-  {
-   "price": 1146,
-   "airlines": [
-    "British Airways"
-   ],
-   "stops": 1,
-   "dep_airport": "FRA",
-   "dep_time": "2027-07-25 06:40",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 07:00",
-   "duration_min": 1040,
-   "layovers": [
-    "LHR"
-   ],
-   "flight_numbers": [
-    "BA 911",
-    "BA 7"
    ]
   },
   {
@@ -165,7 +143,26 @@
    ]
   },
   {
-   "price": 1261,
+   "price": 1248,
+   "airlines": [
+    "Cathay Pacific"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 13:40",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 13:40",
+   "duration_min": 1020,
+   "layovers": [
+    "HKG"
+   ],
+   "flight_numbers": [
+    "CX 288",
+    "CX 526"
+   ]
+  },
+  {
+   "price": 1265,
    "airlines": [
     "Finnair"
    ],
@@ -184,22 +181,23 @@
    ]
   },
   {
-   "price": 1369,
+   "price": 1349,
    "airlines": [
-    "Lufthansa"
+    "Lufthansa",
+    "ANA"
    ],
    "stops": 1,
    "dep_airport": "BRE",
-   "dep_time": "2027-07-25 11:10",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-26 09:30",
-   "duration_min": 920,
+   "dep_time": "2027-07-25 06:10",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 06:55",
+   "duration_min": 1065,
    "layovers": [
-    "FRA"
+    "MUC"
    ],
    "flight_numbers": [
-    "LH 53",
-    "LH 710"
+    "LH 2199",
+    "NH 218"
    ]
   },
   {
