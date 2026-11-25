@@ -1,5 +1,5 @@
 {
- "t": "2026-11-25T02:22:11+00:00",
+ "t": "2026-11-25T12:46:00+00:00",
  "config": {
   "from": [
    "FRA",
@@ -21,22 +21,22 @@
   "notify_endpoint": "https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=notify"
  },
  "best": {
-  "price": 1146,
+  "price": 1094,
   "airlines": [
    "British Airways"
   ],
   "stops": 1,
-  "dep_airport": "FRA",
-  "dep_time": "2027-07-25 06:40",
+  "dep_airport": "AMS",
+  "dep_time": "2027-07-25 10:05",
   "arr_airport": "HND",
-  "arr_time": "2027-07-26 07:00",
-  "duration_min": 1040,
+  "arr_time": "2027-07-26 10:55",
+  "duration_min": 1070,
   "layovers": [
    "LHR"
   ],
   "flight_numbers": [
-   "BA 911",
-   "BA 7"
+   "BA 429",
+   "BA 5"
   ]
  },
  "nonstop": {
@@ -92,6 +92,25 @@
  },
  "flights": [
   {
+   "price": 1094,
+   "airlines": [
+    "British Airways"
+   ],
+   "stops": 1,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 10:05",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 10:55",
+   "duration_min": 1070,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 429",
+    "BA 5"
+   ]
+  },
+  {
    "price": 1146,
    "airlines": [
     "British Airways"
@@ -108,25 +127,6 @@
    "flight_numbers": [
     "BA 911",
     "BA 7"
-   ]
-  },
-  {
-   "price": 1194,
-   "airlines": [
-    "British Airways"
-   ],
-   "stops": 1,
-   "dep_airport": "AMS",
-   "dep_time": "2027-07-25 08:10",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 10:55",
-   "duration_min": 1185,
-   "layovers": [
-    "LHR"
-   ],
-   "flight_numbers": [
-    "BA 445",
-    "BA 5"
    ]
   },
   {
@@ -165,26 +165,7 @@
    ]
   },
   {
-   "price": 1214,
-   "airlines": [
-    "British Airways"
-   ],
-   "stops": 1,
-   "dep_airport": "AMS",
-   "dep_time": "2027-07-25 10:05",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 10:55",
-   "duration_min": 1070,
-   "layovers": [
-    "LHR"
-   ],
-   "flight_numbers": [
-    "BA 429",
-    "BA 5"
-   ]
-  },
-  {
-   "price": 1268,
+   "price": 1261,
    "airlines": [
     "Finnair"
    ],
@@ -200,6 +181,25 @@
    "flight_numbers": [
     "AY 1302",
     "AY 73"
+   ]
+  },
+  {
+   "price": 1369,
+   "airlines": [
+    "Lufthansa"
+   ],
+   "stops": 1,
+   "dep_airport": "BRE",
+   "dep_time": "2027-07-25 11:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 09:30",
+   "duration_min": 920,
+   "layovers": [
+    "FRA"
+   ],
+   "flight_numbers": [
+    "LH 53",
+    "LH 710"
    ]
   },
   {
@@ -219,7 +219,7 @@
    ]
   },
   {
-   "price": 1594,
+   "price": 1614,
    "airlines": [
     "KLM"
    ],
