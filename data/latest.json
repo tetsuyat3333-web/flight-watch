@@ -1,5 +1,5 @@
 {
- "t": "2026-11-26T08:09:10+00:00",
+ "t": "2026-11-26T18:58:47+00:00",
  "config": {
   "from": [
    "FRA",
@@ -56,7 +56,7 @@
   ]
  },
  "home": {
-  "price": 1210,
+  "price": 1209,
   "airlines": [
    "Air China"
   ],
@@ -111,7 +111,29 @@
    ]
   },
   {
-   "price": 1210,
+   "price": 1173,
+   "airlines": [
+    "Finnair",
+    "JAL"
+   ],
+   "stops": 2,
+   "dep_airport": "DUS",
+   "dep_time": "2027-07-25 18:45",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-27 09:30",
+   "duration_min": 1905,
+   "layovers": [
+    "HEL",
+    "NGO"
+   ],
+   "flight_numbers": [
+    "AY 1396",
+    "AY 79",
+    "JL 3082"
+   ]
+  },
+  {
+   "price": 1209,
    "airlines": [
     "Air China"
    ],
@@ -184,7 +206,7 @@
    ]
   },
   {
-   "price": 1266,
+   "price": 1295,
    "airlines": [
     "Finnair"
    ],
@@ -200,26 +222,6 @@
    "flight_numbers": [
     "AY 1302",
     "AY 73"
-   ]
-  },
-  {
-   "price": 1349,
-   "airlines": [
-    "Lufthansa",
-    "ANA"
-   ],
-   "stops": 1,
-   "dep_airport": "BRE",
-   "dep_time": "2027-07-25 06:10",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 06:55",
-   "duration_min": 1065,
-   "layovers": [
-    "MUC"
-   ],
-   "flight_numbers": [
-    "LH 2199",
-    "NH 218"
    ]
   },
   {
