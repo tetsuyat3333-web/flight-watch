@@ -1,5 +1,5 @@
 {
- "t": "2026-11-25T23:36:40+00:00",
+ "t": "2026-11-26T08:09:10+00:00",
  "config": {
   "from": [
    "FRA",
@@ -21,7 +21,7 @@
   "notify_endpoint": "https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=notify"
  },
  "best": {
-  "price": 1079,
+  "price": 1094,
   "airlines": [
    "British Airways"
   ],
@@ -56,19 +56,22 @@
   ]
  },
  "home": {
-  "price": 1211,
+  "price": 1210,
   "airlines": [
-   "JAL"
+   "Air China"
   ],
-  "stops": 0,
+  "stops": 1,
   "dep_airport": "FRA",
-  "dep_time": "2027-07-25 20:10",
-  "arr_airport": "NRT",
-  "arr_time": "2027-07-26 16:15",
-  "duration_min": 785,
-  "layovers": [],
+  "dep_time": "2027-07-25 19:50",
+  "arr_airport": "HND",
+  "arr_time": "2027-07-26 20:00",
+  "duration_min": 1030,
+  "layovers": [
+   "PEK"
+  ],
   "flight_numbers": [
-   "JL 408"
+   "CA 932",
+   "CA 421"
   ]
  },
  "home_nonstop": {
@@ -89,7 +92,7 @@
  },
  "flights": [
   {
-   "price": 1079,
+   "price": 1094,
    "airlines": [
     "British Airways"
    ],
@@ -105,6 +108,25 @@
    "flight_numbers": [
     "BA 429",
     "BA 5"
+   ]
+  },
+  {
+   "price": 1210,
+   "airlines": [
+    "Air China"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 19:50",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 20:00",
+   "duration_min": 1030,
+   "layovers": [
+    "PEK"
+   ],
+   "flight_numbers": [
+    "CA 932",
+    "CA 421"
    ]
   },
   {
@@ -143,26 +165,26 @@
    ]
   },
   {
-   "price": 1248,
+   "price": 1230,
    "airlines": [
-    "Cathay Pacific"
+    "Air China"
    ],
    "stops": 1,
    "dep_airport": "FRA",
-   "dep_time": "2027-07-25 13:40",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-26 13:40",
-   "duration_min": 1020,
+   "dep_time": "2027-07-25 14:15",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 14:30",
+   "duration_min": 1035,
    "layovers": [
-    "HKG"
+    "PEK"
    ],
    "flight_numbers": [
-    "CX 288",
-    "CX 526"
+    "CA 966",
+    "CA 133"
    ]
   },
   {
-   "price": 1265,
+   "price": 1266,
    "airlines": [
     "Finnair"
    ],
@@ -201,23 +223,7 @@
    ]
   },
   {
-   "price": 1434,
-   "airlines": [
-    "Lufthansa"
-   ],
-   "stops": 0,
-   "dep_airport": "FRA",
-   "dep_time": "2027-07-25 13:45",
-   "arr_airport": "NRT",
-   "arr_time": "2027-07-26 09:30",
-   "duration_min": 765,
-   "layovers": [],
-   "flight_numbers": [
-    "LH 710"
-   ]
-  },
-  {
-   "price": 1614,
+   "price": 1590,
    "airlines": [
     "KLM"
    ],
@@ -230,6 +236,22 @@
    "layovers": [],
    "flight_numbers": [
     "KL 861"
+   ]
+  },
+  {
+   "price": 1632,
+   "airlines": [
+    "Lufthansa"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 13:45",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 09:30",
+   "duration_min": 765,
+   "layovers": [],
+   "flight_numbers": [
+    "LH 710"
    ]
   },
   {
