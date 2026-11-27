@@ -1481,5 +1481,77 @@
   },
   "price_level": null,
   "typical_range": null
+ },
+ {
+  "t": "2026-11-27T03:37:27+00:00",
+  "best": {
+   "price": 1094,
+   "airlines": [
+    "British Airways"
+   ],
+   "stops": 1,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 10:05",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-26 10:55",
+   "duration_min": 1070,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 429",
+    "BA 5"
+   ]
+  },
+  "nonstop": {
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  "home": {
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  "home_nonstop": {
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  "price_level": null,
+  "typical_range": null
  }
 ]

@@ -1,5 +1,5 @@
 {
- "t": "2026-11-26T18:58:47+00:00",
+ "t": "2026-11-27T03:37:27+00:00",
  "config": {
   "from": [
    "FRA",
@@ -40,7 +40,7 @@
   ]
  },
  "nonstop": {
-  "price": 1211,
+  "price": 1210,
   "airlines": [
    "JAL"
   ],
@@ -56,26 +56,23 @@
   ]
  },
  "home": {
-  "price": 1209,
+  "price": 1210,
   "airlines": [
-   "Air China"
+   "JAL"
   ],
-  "stops": 1,
+  "stops": 0,
   "dep_airport": "FRA",
-  "dep_time": "2027-07-25 19:50",
-  "arr_airport": "HND",
-  "arr_time": "2027-07-26 20:00",
-  "duration_min": 1030,
-  "layovers": [
-   "PEK"
-  ],
+  "dep_time": "2027-07-25 20:10",
+  "arr_airport": "NRT",
+  "arr_time": "2027-07-26 16:15",
+  "duration_min": 785,
+  "layovers": [],
   "flight_numbers": [
-   "CA 932",
-   "CA 421"
+   "JL 408"
   ]
  },
  "home_nonstop": {
-  "price": 1211,
+  "price": 1210,
   "airlines": [
    "JAL"
   ],
@@ -111,6 +108,25 @@
    ]
   },
   {
+   "price": 1094,
+   "airlines": [
+    "British Airways"
+   ],
+   "stops": 1,
+   "dep_airport": "AMS",
+   "dep_time": "2027-07-25 21:15",
+   "arr_airport": "HND",
+   "arr_time": "2027-07-27 07:00",
+   "duration_min": 1605,
+   "layovers": [
+    "LHR"
+   ],
+   "flight_numbers": [
+    "BA 443",
+    "BA 7"
+   ]
+  },
+  {
    "price": 1173,
    "airlines": [
     "Finnair",
@@ -133,26 +149,7 @@
    ]
   },
   {
-   "price": 1209,
-   "airlines": [
-    "Air China"
-   ],
-   "stops": 1,
-   "dep_airport": "FRA",
-   "dep_time": "2027-07-25 19:50",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 20:00",
-   "duration_min": 1030,
-   "layovers": [
-    "PEK"
-   ],
-   "flight_numbers": [
-    "CA 932",
-    "CA 421"
-   ]
-  },
-  {
-   "price": 1211,
+   "price": 1210,
    "airlines": [
     "JAL"
    ],
@@ -187,22 +184,22 @@
    ]
   },
   {
-   "price": 1230,
+   "price": 1268,
    "airlines": [
-    "Air China"
+    "Finnair"
    ],
    "stops": 1,
    "dep_airport": "FRA",
-   "dep_time": "2027-07-25 14:15",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-26 14:30",
-   "duration_min": 1035,
+   "dep_time": "2027-07-25 11:30",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 13:05",
+   "duration_min": 1115,
    "layovers": [
-    "PEK"
+    "HEL"
    ],
    "flight_numbers": [
-    "CA 966",
-    "CA 133"
+    "AY 1412",
+    "AY 73"
    ]
   },
   {
@@ -257,7 +254,7 @@
    ]
   },
   {
-   "price": 1852,
+   "price": 1851,
    "airlines": [
     "ANA"
    ],
