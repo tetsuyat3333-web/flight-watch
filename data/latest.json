@@ -1,5 +1,5 @@
 {
- "t": "2026-11-28T01:26:17+00:00",
+ "t": "2026-11-28T11:39:02+00:00",
  "config": {
   "from": [
    "FRA",
@@ -21,26 +21,26 @@
   "notify_endpoint": "https://zvkuyajajvoqbvvfphpl.supabase.co/functions/v1/fw?action=notify"
  },
  "best": {
-  "price": 1094,
+  "price": 1060,
   "airlines": [
-   "British Airways"
+   "Etihad"
   ],
   "stops": 1,
-  "dep_airport": "AMS",
-  "dep_time": "2027-07-25 10:05",
-  "arr_airport": "HND",
-  "arr_time": "2027-07-26 10:55",
-  "duration_min": 1070,
+  "dep_airport": "FRA",
+  "dep_time": "2027-07-25 15:50",
+  "arr_airport": "NRT",
+  "arr_time": "2027-07-27 12:45",
+  "duration_min": 2275,
   "layovers": [
-   "LHR"
+   "AUH"
   ],
   "flight_numbers": [
-   "BA 429",
-   "BA 5"
+   "EY 120",
+   "EY 800"
   ]
  },
  "nonstop": {
-  "price": 1209,
+  "price": 1210,
   "airlines": [
    "JAL"
   ],
@@ -56,23 +56,26 @@
   ]
  },
  "home": {
-  "price": 1209,
+  "price": 1060,
   "airlines": [
-   "JAL"
+   "Etihad"
   ],
-  "stops": 0,
+  "stops": 1,
   "dep_airport": "FRA",
-  "dep_time": "2027-07-25 20:10",
+  "dep_time": "2027-07-25 15:50",
   "arr_airport": "NRT",
-  "arr_time": "2027-07-26 16:15",
-  "duration_min": 785,
-  "layovers": [],
+  "arr_time": "2027-07-27 12:45",
+  "duration_min": 2275,
+  "layovers": [
+   "AUH"
+  ],
   "flight_numbers": [
-   "JL 408"
+   "EY 120",
+   "EY 800"
   ]
  },
  "home_nonstop": {
-  "price": 1209,
+  "price": 1210,
   "airlines": [
    "JAL"
   ],
@@ -88,6 +91,25 @@
   ]
  },
  "flights": [
+  {
+   "price": 1060,
+   "airlines": [
+    "Etihad"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 15:50",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-27 12:45",
+   "duration_min": 2275,
+   "layovers": [
+    "AUH"
+   ],
+   "flight_numbers": [
+    "EY 120",
+    "EY 800"
+   ]
+  },
   {
    "price": 1094,
    "airlines": [
@@ -108,26 +130,42 @@
    ]
   },
   {
-   "price": 1094,
+   "price": 1205,
    "airlines": [
-    "British Airways"
+    "Etihad"
    ],
    "stops": 1,
    "dep_airport": "AMS",
-   "dep_time": "2027-07-25 21:15",
-   "arr_airport": "HND",
-   "arr_time": "2027-07-27 07:00",
-   "duration_min": 1605,
+   "dep_time": "2027-07-25 10:25",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 12:45",
+   "duration_min": 1160,
    "layovers": [
-    "LHR"
+    "AUH"
    ],
    "flight_numbers": [
-    "BA 443",
-    "BA 7"
+    "EY 44",
+    "EY 800"
    ]
   },
   {
-   "price": 1173,
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  {
+   "price": 1217,
    "airlines": [
     "Finnair",
     "JAL"
@@ -149,23 +187,26 @@
    ]
   },
   {
-   "price": 1209,
+   "price": 1247,
    "airlines": [
-    "JAL"
+    "Cathay Pacific"
    ],
-   "stops": 0,
+   "stops": 1,
    "dep_airport": "FRA",
-   "dep_time": "2027-07-25 20:10",
+   "dep_time": "2027-07-25 13:40",
    "arr_airport": "NRT",
-   "arr_time": "2027-07-26 16:15",
-   "duration_min": 785,
-   "layovers": [],
+   "arr_time": "2027-07-26 13:40",
+   "duration_min": 1020,
+   "layovers": [
+    "HKG"
+   ],
    "flight_numbers": [
-    "JL 408"
+    "CX 288",
+    "CX 526"
    ]
   },
   {
-   "price": 1213,
+   "price": 1250,
    "airlines": [
     "Finnair"
    ],
@@ -203,26 +244,27 @@
    ]
   },
   {
-   "price": 1361,
+   "price": 1348,
    "airlines": [
-    "British Airways"
+    "Lufthansa",
+    "ANA"
    ],
    "stops": 1,
-   "dep_airport": "DUS",
-   "dep_time": "2027-07-25 07:30",
+   "dep_airport": "BRE",
+   "dep_time": "2027-07-25 06:10",
    "arr_airport": "HND",
-   "arr_time": "2027-07-26 07:00",
-   "duration_min": 990,
+   "arr_time": "2027-07-26 06:55",
+   "duration_min": 1065,
    "layovers": [
-    "LHR"
+    "MUC"
    ],
    "flight_numbers": [
-    "BA 925",
-    "BA 7"
+    "LH 2199",
+    "NH 218"
    ]
   },
   {
-   "price": 1589,
+   "price": 1595,
    "airlines": [
     "KLM"
    ],
@@ -238,7 +280,7 @@
    ]
   },
   {
-   "price": 1695,
+   "price": 1632,
    "airlines": [
     "Lufthansa"
    ],

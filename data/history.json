@@ -1702,5 +1702,80 @@
    "message": "New lowest nonstop fare: €1209 (previous low €1210) — FRA→NRT, JAL",
    "click": "https://www.skyscanner.de/transport/flights/ams/tyoa/270725/270813/?adultsv2=1&cabinclass=economy&rtn=1"
   }
+ },
+ {
+  "t": "2026-11-28T11:39:02+00:00",
+  "best": {
+   "price": 1060,
+   "airlines": [
+    "Etihad"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 15:50",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-27 12:45",
+   "duration_min": 2275,
+   "layovers": [
+    "AUH"
+   ],
+   "flight_numbers": [
+    "EY 120",
+    "EY 800"
+   ]
+  },
+  "nonstop": {
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  "home": {
+   "price": 1060,
+   "airlines": [
+    "Etihad"
+   ],
+   "stops": 1,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 15:50",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-27 12:45",
+   "duration_min": 2275,
+   "layovers": [
+    "AUH"
+   ],
+   "flight_numbers": [
+    "EY 120",
+    "EY 800"
+   ]
+  },
+  "home_nonstop": {
+   "price": 1210,
+   "airlines": [
+    "JAL"
+   ],
+   "stops": 0,
+   "dep_airport": "FRA",
+   "dep_time": "2027-07-25 20:10",
+   "arr_airport": "NRT",
+   "arr_time": "2027-07-26 16:15",
+   "duration_min": 785,
+   "layovers": [],
+   "flight_numbers": [
+    "JL 408"
+   ]
+  },
+  "price_level": null,
+  "typical_range": null
  }
 ]
