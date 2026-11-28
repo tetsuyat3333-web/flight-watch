@@ -1,5 +1,5 @@
 {
- "t": "2026-11-27T16:34:22+00:00",
+ "t": "2026-11-28T01:26:17+00:00",
  "config": {
   "from": [
    "FRA",
@@ -40,7 +40,7 @@
   ]
  },
  "nonstop": {
-  "price": 1210,
+  "price": 1209,
   "airlines": [
    "JAL"
   ],
@@ -56,7 +56,7 @@
   ]
  },
  "home": {
-  "price": 1210,
+  "price": 1209,
   "airlines": [
    "JAL"
   ],
@@ -72,7 +72,7 @@
   ]
  },
  "home_nonstop": {
-  "price": 1210,
+  "price": 1209,
   "airlines": [
    "JAL"
   ],
@@ -149,7 +149,7 @@
    ]
   },
   {
-   "price": 1210,
+   "price": 1209,
    "airlines": [
     "JAL"
    ],
@@ -222,7 +222,7 @@
    ]
   },
   {
-   "price": 1590,
+   "price": 1589,
    "airlines": [
     "KLM"
    ],
@@ -238,7 +238,7 @@
    ]
   },
   {
-   "price": 1632,
+   "price": 1695,
    "airlines": [
     "Lufthansa"
    ],
